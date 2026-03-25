@@ -64,6 +64,8 @@ export default function BmwRepairPage() {
                   name={svc.name}
                   slug={svc.slug}
                   url={svc.url}
+                  category={svc.category}
+                  shortDescription={svc.shortDescription}
                 />
               </ScrollReveal>
             ))}

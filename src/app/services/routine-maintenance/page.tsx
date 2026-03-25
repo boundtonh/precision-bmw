@@ -69,6 +69,8 @@ export default function RoutineMaintenancePage() {
                   name={svc.name}
                   slug={svc.slug}
                   url={svc.url}
+                  category={svc.category}
+                  shortDescription={svc.shortDescription}
                 />
               </ScrollReveal>
             ))}
