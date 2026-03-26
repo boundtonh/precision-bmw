@@ -10,6 +10,7 @@ import SectionHeader from "@/components/SectionHeader";
 import ScrollReveal from "@/components/ScrollReveal";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import JsonLd from "@/components/JsonLd";
+import HeroReady from "@/components/HeroReady";
 
 export const revalidate = false;
 
@@ -116,6 +117,7 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
+        <HeroReady />
         {/* Background */}
         <div
           className="hero-bg-animate"
