@@ -20,8 +20,6 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     // Add .animating to hide via CSS, reflow to commit state, then observe
     el.classList.add("animating");
     void el.offsetHeight;

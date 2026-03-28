@@ -12,8 +12,6 @@ const steps = [
 
 export default function HeroReady() {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     // Add .animating to set opacity:0 via CSS, then force a reflow so the
     // browser commits that state before we trigger the transition
     steps.forEach(({ cls }) => {
