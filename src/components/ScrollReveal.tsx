@@ -29,15 +29,11 @@ export default function ScrollReveal({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          if (delay > 0) {
-            setTimeout(() => el.classList.add("visible"), delay * 1000);
-          } else {
-            el.classList.add("visible");
-          }
+          el.classList.add("visible");
           observer.unobserve(el);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0 }
     );
 
     observer.observe(el);
