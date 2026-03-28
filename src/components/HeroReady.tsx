@@ -1,45 +1,34 @@
 "use client";
 import { useEffect } from "react";
 
-const sequence = [
-  { cls: "hero-bg-animate",       delay: 0,    duration: 2400, fromOpacity: "0", fromTransform: "scale(1.12)", toOpacity: "1", toTransform: "scale(1)" },
-  { cls: "hero-overlay-animate",  delay: 300,  duration: 500,  fromOpacity: "0", fromTransform: "",            toOpacity: "1", toTransform: "" },
-  { cls: "hero-trustbar-animate", delay: 800,  duration: 500,  fromOpacity: "0", fromTransform: "translateY(20px)", toOpacity: "1", toTransform: "translateY(0)" },
-  { cls: "hero-h1-animate",       delay: 1100, duration: 600,  fromOpacity: "0", fromTransform: "translateY(20px)", toOpacity: "1", toTransform: "translateY(0)" },
-  { cls: "hero-sub-animate",      delay: 1400, duration: 500,  fromOpacity: "0", fromTransform: "translateY(20px)", toOpacity: "1", toTransform: "translateY(0)" },
-  { cls: "hero-ctas-animate",     delay: 1700, duration: 500,  fromOpacity: "0", fromTransform: "translateY(20px)", toOpacity: "1", toTransform: "translateY(0)" },
+const steps = [
+  { cls: "hero-bg-animate",       delay: 0    },
+  { cls: "hero-overlay-animate",  delay: 300  },
+  { cls: "hero-trustbar-animate", delay: 800  },
+  { cls: "hero-h1-animate",       delay: 1100 },
+  { cls: "hero-sub-animate",      delay: 1400 },
+  { cls: "hero-ctas-animate",     delay: 1700 },
 ];
 
 export default function HeroReady() {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const timers: ReturnType<typeof setTimeout>[] = [];
-
-    sequence.forEach(({ cls, delay, duration, fromOpacity, fromTransform, toOpacity, toTransform }) => {
-      const el = document.querySelector<HTMLElement>(`.${cls}`);
-      if (!el) return;
-
-      // Set initial state
-      el.style.opacity = fromOpacity;
-      if (fromTransform) el.style.transform = fromTransform;
-      el.style.willChange = "opacity, transform";
-
-      // Force a reflow so Safari registers the initial state before
-      // the transition is attached — without this, iOS Safari batches
-      // the style changes and skips the transition entirely
-      void el.offsetHeight;
-
-      el.style.transition = `opacity ${duration}ms ease, transform ${duration}ms ease`;
-
-      timers.push(
-        setTimeout(() => {
-          el.style.opacity = toOpacity;
-          if (toTransform) el.style.transform = toTransform;
-          el.style.willChange = "auto";
-        }, delay)
-      );
+    // Add .animating to set opacity:0 via CSS, then force a reflow so the
+    // browser commits that state before we trigger the transition
+    steps.forEach(({ cls }) => {
+      document.querySelector(`.${cls}`)?.classList.add("animating");
     });
+
+    // offsetHeight read forces a reflow — required on iOS Safari to ensure
+    // the "from" state is committed before the transition-triggering class fires
+    void document.body.offsetHeight;
+
+    const timers = steps.map(({ cls, delay }) =>
+      setTimeout(() => {
+        document.querySelector(`.${cls}`)?.classList.add("active");
+      }, delay)
+    );
 
     return () => timers.forEach(clearTimeout);
   }, []);

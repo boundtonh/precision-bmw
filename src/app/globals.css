@@ -288,9 +288,43 @@ button { font-family: var(--font-display), sans-serif; cursor: pointer; border: 
   height: 100%;
 }
 
-/* Scroll Reveal — initial state set via JS in ScrollReveal.tsx */
+/* Scroll Reveal — visible by default, JS adds .animating then .visible */
+.reveal.animating {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.reveal.animating.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-/* Hero + Scroll Reveal animations — fully JS-controlled via HeroReady.tsx and ScrollReveal.tsx */
+/* Hero — visible by default, JS adds .animating then .active */
+.hero-bg-animate.animating {
+  opacity: 0;
+  transform: scale(1.12);
+  transition: opacity 2.4s ease, transform 2.4s ease;
+}
+.hero-bg-animate.active { opacity: 1; transform: scale(1); }
+
+.hero-overlay-animate.animating { opacity: 0; transition: opacity 0.5s ease; }
+.hero-overlay-animate.active    { opacity: 1; }
+
+.hero-trustbar-animate.animating,
+.hero-h1-animate.animating,
+.hero-sub-animate.animating,
+.hero-ctas-animate.animating {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-trustbar-animate.active,
+.hero-h1-animate.active,
+.hero-sub-animate.active,
+.hero-ctas-animate.active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* FAQ Accordion */
 .faq-item {
