@@ -25,6 +25,11 @@ export default function ScrollReveal({
     // Set invisible state via JS so content is always visible if JS fails
     el.style.opacity = "0";
     el.style.transform = "translateY(24px)";
+
+    // Force reflow — iOS Safari batches style changes and skips transitions
+    // without this reflow between the initial state and the transition setup
+    void el.offsetHeight;
+
     el.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
     if (delay > 0) el.style.transitionDelay = `${delay}s`;
 
