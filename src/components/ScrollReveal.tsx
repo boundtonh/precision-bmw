@@ -20,16 +20,29 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    // Set invisible state via JS so content is always visible if JS fails
+    el.style.opacity = "0";
+    el.style.transform = "translateY(24px)";
+    el.style.transition = `opacity 0.6s ease-out, transform 0.6s ease-out`;
+    if (delay > 0) el.style.transitionDelay = `${delay}s`;
+
+    const show = () => {
       el.style.opacity = "1";
-      el.style.transform = "none";
+      el.style.transform = "translateY(0)";
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      // Fallback for browsers without IntersectionObserver
+      show();
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("visible");
+          show();
           observer.unobserve(el);
         }
       },
@@ -42,11 +55,7 @@ export default function ScrollReveal({
 
   const Comp = Tag as React.ElementType;
   return (
-    <Comp
-      ref={ref}
-      className={`reveal ${className}`}
-      style={delay > 0 ? { transitionDelay: `${delay}s` } : undefined}
-    >
+    <Comp ref={ref} className={className}>
       {children}
     </Comp>
   );
