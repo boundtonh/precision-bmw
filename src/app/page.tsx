@@ -337,15 +337,7 @@ export default function HomePage() {
           </ScrollReveal>
 
           {/* Category cards */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: "20px",
-              marginBottom: "48px",
-            }}
-            className="category-grid"
-          >
+          <div className="category-grid">
             {categories.map((cat, i) => (
               <ScrollReveal key={cat.key} delay={i * 0.1}>
                 <Link href={cat.href} className="category-card">
@@ -403,7 +395,7 @@ export default function HomePage() {
           .category-grid { grid-template-columns: 1fr !important; }
         }
         @media (max-width: 1024px) {
-          .category-grid { grid-template-columns: 1fr 1fr !important; }
+          .category-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </>
