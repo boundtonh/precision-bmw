@@ -67,7 +67,7 @@ const shopFeatures = [
   {
     icon: CogIcon,
     title: "Dealer-Level Equipment",
-    desc: "BMW-specific diagnostic computers, factory ISTA+ software, and OEM service tools.",
+    desc: "BMW-specific diagnostic computers, factory-level diagnostic software, and OEM service tools.",
   },
   {
     icon: AwardIcon,

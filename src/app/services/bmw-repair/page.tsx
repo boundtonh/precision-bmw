@@ -12,7 +12,7 @@ export const revalidate = false;
 export const metadata: Metadata = {
   title: "BMW Repair Services — Southern NH | Precision BMW Repair",
   description:
-    "Expert BMW repair using factory ISTA+ diagnostics, OEM parts, and a dealer-trained technician. Brakes, transmission, electrical, alignment, and more. Southern NH.",
+    "Expert BMW repair using factory-level diagnostics, OEM parts, and a dealer-trained technician. Brakes, transmission, electrical, alignment, and more. Southern NH.",
   alternates: {
     canonical: "https://www.bmwrepairnh.com/services/bmw-repair",
   },
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 const repairServices = services.filter((s) => s.category === "bmw-repair");
 
 const trustPoints = [
-  "Factory ISTA+ diagnostic software — not generic OBD-II tools",
+  "BMW-specific factory diagnostic software — not generic OBD-II tools",
   "OEM BMW parts only — no aftermarket substitutes",
   "Accurate diagnosis before any parts are ordered",
   "Warranty on all parts and labor",
@@ -53,7 +53,7 @@ export default function BmwRepairPage() {
             <SectionHeader
               label="BMW Repair"
               headline="Full-Service BMW Repair"
-              subheadline="Every repair starts with an accurate ISTA+ diagnosis. We fix the problem — not the symptoms."
+              subheadline="Every repair starts with an accurate BMW factory-level diagnosis. We fix the problem — not the symptoms."
             />
           </ScrollReveal>
 
@@ -97,8 +97,7 @@ export default function BmwRepairPage() {
                 Trusted by BMW Owners Across Southern NH
               </h2>
               <p className="section-sub">
-                BMW repair requires BMW-specific knowledge. Derek uses the same ISTA+
-                software and genuine parts as BMW dealerships — with 30+ years of
+                BMW repair requires BMW-specific knowledge. Derek uses the same factory-level diagnostic software and genuine parts as BMW dealerships — with 30+ years of
                 exclusive BMW expertise that most dealers cannot match. Serving BMW
                 owners in Brentwood, Exeter, Portsmouth, Manchester, and all of
                 Southern NH.

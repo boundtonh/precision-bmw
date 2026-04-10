@@ -30,7 +30,7 @@ const routineServices = services.filter(
 
 const trustPoints = [
   "BMW-specified oils and fluids — never generic substitutes",
-  "Condition-Based Service (CBS) reset on every applicable service",
+  "BMW Condition-Based Service (CBS) reset on every applicable service",
   "All work backed by warranty on parts and labor",
   "NH and ME state inspection stickers available",
 ];

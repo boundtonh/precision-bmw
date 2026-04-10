@@ -46,7 +46,7 @@ export const services: Service[] = [
     slug: "diagnostics",
     category: "bmw-repair",
     shortDescription:
-      "Full-system ISTA diagnostic scan covering engine, transmission, DSC, and chassis modules to pinpoint faults with factory-level accuracy.",
+      "Full-system BMW diagnostic scan covering engine, transmission, stability control, and chassis modules to pinpoint faults with factory-level accuracy.",
     url: "/services/bmw-repair/diagnostics",
   },
   {
@@ -62,7 +62,7 @@ export const services: Service[] = [
     slug: "transmission-repair",
     category: "bmw-repair",
     shortDescription:
-      "Diagnosis and repair of ZF and Getrag automatic and manual transmissions, including fluid service, mechatronic repair, and TCU programming.",
+      "Diagnosis and repair of BMW automatic and manual transmissions, including fluid service, internal component repair, and transmission control module programming.",
     url: "/services/bmw-repair/transmission-repair",
   },
   {
@@ -70,7 +70,7 @@ export const services: Service[] = [
     slug: "electrical-repair",
     category: "bmw-repair",
     shortDescription:
-      "Fault tracing and repair across BMW's iDrive, KOMBI, and body electronics using OEM wiring diagrams and ISTA programming.",
+      "Fault tracing and repair across BMW's infotainment, instrument, and body electronics using OEM wiring diagrams and factory-level diagnostic software.",
     url: "/services/bmw-repair/electrical-repair",
   },
   {
@@ -86,7 +86,7 @@ export const services: Service[] = [
     slug: "ac-heating",
     category: "bmw-repair",
     shortDescription:
-      "R-1234yf refrigerant service, compressor diagnosis, and IHKA system repair to restore climate control to factory performance.",
+      "Current-spec refrigerant service, compressor diagnosis, and BMW climate control system repair to restore factory performance.",
     url: "/services/bmw-repair/ac-heating",
   },
   {
@@ -102,7 +102,7 @@ export const services: Service[] = [
     slug: "bmw-diagnostics",
     category: "performance",
     shortDescription:
-      "Advanced ISTA+ and Bootmod3 data logging to establish a precise baseline of engine, drivetrain, and chassis performance before modification.",
+      "Advanced factory-level data logging to establish a precise baseline of engine, drivetrain, and chassis performance before modification.",
     url: "/services/performance/bmw-diagnostics",
   },
   {

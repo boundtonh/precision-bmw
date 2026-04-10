@@ -22,9 +22,9 @@ export const allServiceContent: ServicePageContent[] = [
     heroDescription:
       "The right oil, the right filter, the right interval — done correctly by a dealer-trained technician who works on BMWs exclusively.",
     included: [
-      "BMW-spec full synthetic oil (LL-01, LL-04, or LL-17FE as required by model)",
+      "BMW-specified full synthetic oil — correct grade selected for your specific model and engine",
       "Genuine BMW oil filter and drain plug washer replacement",
-      "Condition-Based Service (CBS) oil indicator reset via ISTA",
+      "Condition-Based Service (BMW CBS) oil indicator reset using factory diagnostic software",
       "Multi-point vehicle inspection — fluid levels, brakes, tires, lighting",
       "Filter housing O-ring inspection and replacement as needed",
       "Fluid level top-off (washer fluid, coolant visual check)",
@@ -93,7 +93,7 @@ export const allServiceContent: ServicePageContent[] = [
       "New Hampshire and Maine state inspection sticker (on qualifying vehicles)",
     ],
     whyParagraph:
-      "BMW suspension geometry uses eccentric bolts, offset bearings, and specific bushing designs that behave differently from other makes. A technician unfamiliar with BMW will often overlook wear that is specific to the E-series or F-series platform. Derek knows the common failure points on every BMW model line and inspects accordingly — not generically.",
+      "BMW suspension geometry uses eccentric bolts, offset bearings, and specific bushing designs that behave differently from other makes. A technician unfamiliar with BMW will often overlook wear that is specific to each BMW model and generation. Derek knows the common failure points on every BMW model line and inspects accordingly — not generically.",
   },
 
   // ── BMW REPAIR ────────────────────────────────────────────────
@@ -104,19 +104,19 @@ export const allServiceContent: ServicePageContent[] = [
     metaTitle:
       "BMW Diagnostics in Southern NH | Precision BMW Repair",
     metaDescription:
-      "Factory-level ISTA+ BMW diagnostic scanning. Full system fault extraction, live data, and root cause analysis. Brentwood NH — serving all of Southern NH.",
+      "Factory-level BMW diagnostic scanning. Full system fault extraction, live data, and root cause analysis. Brentwood NH — serving all of Southern NH.",
     heroDescription:
-      "Generic OBD-II readers miss 90% of what ISTA+ can see. We scan every module, extract every fault, and find the root cause — not just the code.",
+      "Generic OBD-II readers miss 90% of what BMW-specific diagnostic software can see. We scan every module, extract every fault, and find the root cause — not just the code.",
     included: [
-      "Full ISTA+ vehicle scan across all electronic control modules",
+      "Full BMW factory-level vehicle scan across all electronic control modules",
       "Fault code extraction, documentation, and root cause analysis",
-      "Live data stream monitoring: DME, EGS, DSC, chassis, body",
+      "Live data stream monitoring: engine control module, transmission control module, stability control, chassis, body",
       "Component activation and output tests to isolate failed hardware",
       "Software version check and available update identification",
       "Detailed written diagnostic report with recommended repair path",
     ],
     whyParagraph:
-      "BMW vehicles use proprietary protocols (MOST, LIN, and CAN) that only BMW-specific diagnostic software can fully communicate with. Derek uses the same ISTA+ software as BMW dealerships — no aftermarket alternatives. This is the difference between guessing and knowing. Accurate diagnosis means you only pay for repairs you actually need.",
+      "BMW vehicles use proprietary communication networks that only BMW-specific diagnostic software can fully communicate with. Derek uses the same factory-level diagnostic software as BMW dealerships — no aftermarket alternatives. This is the difference between guessing and knowing. Accurate diagnosis means you only pay for repairs you actually need.",
   },
   {
     slug: "brake-service",
@@ -132,7 +132,7 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW-spec front and/or rear brake pad replacement (OEM only)",
       "Brake rotor inspection, measurement, and replacement as required",
       "Electronic brake pad wear sensor replacement where applicable",
-      "Brake pad wear CBS indicator reset via ISTA",
+      "Brake pad wear BMW Condition-Based Service (CBS) indicator reset using factory diagnostic software",
       "Caliper slide pin service, cleaning, and lubrication",
       "Brake fluid moisture content test and full fluid flush as needed",
     ],
@@ -146,19 +146,19 @@ export const allServiceContent: ServicePageContent[] = [
     metaTitle:
       "BMW Transmission Repair in Southern NH | Precision BMW Repair",
     metaDescription:
-      "BMW automatic and manual transmission diagnosis and repair — ZF, Getrag, mechatronic service, and ISTA programming. Southern NH.",
+      "BMW automatic and manual transmission diagnosis and repair — fluid service, internal component service, and factory software programming. Southern NH.",
     heroDescription:
-      "BMW's ZF 8-speed and Getrag double-clutch transmissions are precision units. Diagnosis and repair require factory software and a technician who understands them.",
+      "BMW's automatic and double-clutch transmissions are precision units. Diagnosis and repair require factory software and a technician who understands them.",
     included: [
-      "ISTA diagnostic scan of TCM/EGS module with full fault extraction",
-      "ZF or Getrag fluid drain and refill with BMW-specified fluid and filter",
-      "Mechatronic sleeve and valve body inspection — replacement if required",
+      "BMW factory diagnostic scan of the transmission control module with full fault extraction",
+      "Transmission fluid drain and refill with BMW-specified fluid and filter",
+      "Internal transmission component and valve body inspection — replacement if required",
       "Torque converter shudder diagnosis and flush procedure",
-      "TCM/EGS software update and adaptations reset via ISTA",
+      "Transmission control module software update and adaptations reset via factory diagnostic software",
       "Shift selector mechanism and input shaft inspection",
     ],
     whyParagraph:
-      "BMW's 8-speed ZF transmission requires BMW-specification fluid (not generic ATF) and BMW ISTA programming after any internal service. Incorrect fluid or a missed adaptation reset causes premature mechatronic failure — a $3,000+ part. Derek has been diagnosing BMW transmissions since the E30 generation. The diagnosis is accurate before any parts are ordered.",
+      "BMW's 8-speed automatic transmission requires BMW-specified fluid (not generic transmission fluid) and factory software programming after any internal service. Incorrect fluid or a missed adaptation reset causes premature failure of internal transmission components — a $3,000+ repair. Derek has been diagnosing BMW transmissions since the earliest generations. The diagnosis is accurate before any parts are ordered.",
   },
   {
     slug: "electrical-repair",
@@ -167,16 +167,16 @@ export const allServiceContent: ServicePageContent[] = [
     metaTitle:
       "BMW Electrical Repair in Southern NH | Precision BMW Repair",
     metaDescription:
-      "BMW electrical fault diagnosis and repair using factory ISTA+ software and OEM wiring diagrams. Body electronics, modules, coding. Southern NH.",
+      "BMW electrical fault diagnosis and repair using factory-level diagnostic software and OEM wiring diagrams. Body electronics, modules, coding. Southern NH.",
     heroDescription:
       "BMW's electrical architecture is complex by design. Diagnosing it requires factory tools, BMW wiring diagrams, and a technician trained by BMW of North America.",
     included: [
-      "ISTA+ full electrical system scan — all networked control modules",
-      "LIN, MOST, and CAN bus communication fault isolation",
+      "BMW factory-level full electrical system scan — all networked control modules",
+      "BMW control module network communication fault isolation",
       "Ground point testing and voltage drop measurement with BMW diagrams",
-      "Component activation and output tests via ISTA",
+      "Component activation and output tests via factory diagnostic software",
       "Relay, fuse, and junction box diagnosis",
-      "Module coding, programming, and VIN alignment via ISTA",
+      "Module coding, programming, and VIN alignment via factory diagnostic software",
     ],
     whyParagraph:
       "Modern BMWs communicate over multiple proprietary bus networks that share data between 40+ control modules. A fault in one module can cascade into faults across the entire vehicle. Derek trained directly with BMW of North America on these systems and has the BMW wiring diagram database to trace every wire correctly. No guessing. No unnecessary parts.",
@@ -200,7 +200,7 @@ export const allServiceContent: ServicePageContent[] = [
       "Post-alignment test drive to verify straight tracking and steering return",
     ],
     whyParagraph:
-      "BMW's rear toe and camber settings vary significantly by model and suspension variant. Applying a generic alignment spec to an E92 M3 or F30 330i produces incorrect results. Derek uses BMW-specific alignment specifications for every job, and understands how suspension wear affects alignment — so the root cause is addressed before the alignment is set.",
+      "BMW's rear toe and camber settings vary significantly by model and suspension variant. Applying a generic alignment spec to a BMW M3 or 3 Series produces incorrect results. Derek uses BMW-specific alignment specifications for every job, and understands how suspension wear affects alignment — so the root cause is addressed before the alignment is set.",
   },
   {
     slug: "ac-heating",
@@ -209,19 +209,19 @@ export const allServiceContent: ServicePageContent[] = [
     metaTitle:
       "BMW A/C & Heating Service in Southern NH | Precision BMW Repair",
     metaDescription:
-      "BMW climate control diagnosis and repair — R-1234yf refrigerant service, compressor, IHKA module, heater core. Southern NH.",
+      "BMW climate control diagnosis and repair — refrigerant service, compressor, climate control module, heater core. Southern NH.",
     heroDescription:
-      "BMW's IHKA (Integrated Automatic Heating and Air Conditioning) is a sophisticated system. Diagnosis requires ISTA and a technician who understands it.",
+      "BMW's integrated automatic heating and air conditioning system is sophisticated by design. Diagnosis requires factory-level tools and a technician who understands it.",
     included: [
-      "R-1234yf refrigerant recovery, vacuum, and recharge to BMW specification",
+      "Current-spec refrigerant recovery, vacuum, and recharge to BMW specification",
       "Compressor clutch engagement and pressure test",
       "Cabin evaporator and condenser visual inspection",
-      "IHKA module fault scan and actuator output tests via ISTA",
+      "Climate control module fault scan and actuator output tests via factory diagnostic software",
       "Cabin microfilter replacement",
       "Heater core, coolant valve, and blend door function verification",
     ],
     whyParagraph:
-      "BMW's dual-zone and four-zone IHKA systems use blend doors, coolant-control valves, and refrigerant pressure sensors that communicate over the CAN bus. Diagnosing a failure as 'compressor' without checking actuator output tests is a guess. At Precision BMW, every A/C diagnosis starts with ISTA — not assumptions. OEM parts only, warranty on all work.",
+      "BMW's dual-zone and four-zone climate control systems use blend doors, coolant-control valves, and refrigerant pressure sensors that communicate across BMW's control module network. Diagnosing a failure as 'compressor' without checking actuator output tests is a guess. At Precision BMW, every A/C diagnosis starts with factory-level diagnostic software — not assumptions. OEM parts only, warranty on all work.",
   },
   {
     slug: "steering-suspension",
@@ -257,15 +257,15 @@ export const allServiceContent: ServicePageContent[] = [
     heroDescription:
       "Before you modify anything, know exactly where your BMW stands. Baseline diagnostics protect your investment and expose hidden faults before they become expensive problems.",
     included: [
-      "ISTA+ full system baseline scan with complete fault history review",
-      "Wideband O2 and fuel trim analysis — long-term and short-term",
-      "Boost pressure, MAF output, and injector duty cycle data log",
+      "BMW factory-level full system baseline scan with complete fault history review",
+      "Oxygen sensor and fuel trim analysis — long-term and short-term",
+      "Boost pressure, mass airflow sensor output, and fuel system performance data log",
       "Pre/post-modification readiness check for ECU tuning compatibility",
       "Cooling system efficiency and thermostat function baseline",
       "Tune version and ECU calibration documentation",
     ],
     whyParagraph:
-      "Modification on a BMW with existing faults — a failing HPFP, a weak ignition coil, or a marginal charge pipe — produces poor results at best and engine damage at worst. Derek's background in aviation mechanics (A&P certified, FAA pilot's license) means he approaches diagnostics with the same methodical precision applied to aircraft — nothing is assumed, everything is measured.",
+      "Modification on a BMW with existing faults — a failing high-pressure fuel pump, a weak ignition coil, or a marginal charge pipe — produces poor results at best and engine damage at worst. Derek's background in aviation mechanics (A&P certified, FAA pilot's license) means he approaches diagnostics with the same methodical precision applied to aircraft — nothing is assumed, everything is measured.",
   },
   {
     slug: "performance-upgrades",
@@ -278,8 +278,8 @@ export const allServiceContent: ServicePageContent[] = [
     heroDescription:
       "BMW's turbocharged inline-six and N/S/B-series engines respond exceptionally well to carefully selected upgrades. We install and calibrate everything correctly — no shortcuts.",
     included: [
-      "ECU calibration via Bootmod3, MHD, or equivalent platform",
-      "TCU tuning for optimized shift points and torque increase compatibility",
+      "ECU calibration via industry-leading professional tuning software",
+      "Transmission tuning for optimized shift points and torque increase compatibility",
       "Cold air intake and high-flow air filter installation",
       "Upgraded intercooler and charge pipe kit fitting",
       "Cat-back exhaust and downpipe installation",

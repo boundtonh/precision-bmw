@@ -28,7 +28,7 @@ const performanceServices = services.filter(
 
 const trustPoints = [
   "Baseline diagnostics before any modification — no blind tuning",
-  "ECU calibration via Bootmod3, MHD, and other trusted platforms",
+  "ECU calibration via industry-leading professional tuning software",
   "Post-installation data logging and calibration verification",
   "30+ years of exclusive BMW powertrain knowledge",
 ];
