@@ -1,5 +1,6 @@
 "use client";
 import { useEffect } from "react";
+import { INTRO_DONE_EVENT } from "./IntroLoader";
 
 const steps = [
   { cls: "hero-bg-animate",       delay: 0    },
@@ -22,13 +23,24 @@ export default function HeroReady() {
     // the "from" state is committed before the transition-triggering class fires
     void document.body.offsetHeight;
 
-    const timers = steps.map(({ cls, delay }) =>
-      setTimeout(() => {
-        document.querySelector(`.${cls}`)?.classList.add("active");
-      }, delay)
-    );
+    let timers: ReturnType<typeof setTimeout>[] = [];
+    const start = () => {
+      timers = steps.map(({ cls, delay }) =>
+        setTimeout(() => {
+          document.querySelector(`.${cls}`)?.classList.add("active");
+        }, delay)
+      );
+    };
 
-    return () => timers.forEach(clearTimeout);
+    // On a first visit the intro loader is covering the page; start when it begins to exit
+    const introPlaying = document.documentElement.classList.contains("intro-play");
+    if (introPlaying) window.addEventListener(INTRO_DONE_EVENT, start, { once: true });
+    else start();
+
+    return () => {
+      window.removeEventListener(INTRO_DONE_EVENT, start);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return null;

@@ -11,6 +11,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import PlaceholderImage from "@/components/PlaceholderImage";
 import JsonLd from "@/components/JsonLd";
 import HeroReady from "@/components/HeroReady";
+import IntroLoader from "@/components/IntroLoader";
 
 export const revalidate = false;
 
@@ -117,6 +118,7 @@ export default function HomePage() {
           overflow: "hidden",
         }}
       >
+        <IntroLoader />
         <HeroReady />
         {/* Background */}
         <div

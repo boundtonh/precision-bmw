@@ -28,7 +28,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={prompt.variable}>
+    <html lang="en" className={prompt.variable} suppressHydrationWarning>
+      <head>
+        {/* First homepage visit (or /?intro to replay): flag the intro loader before first paint so the page never flashes */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(location.pathname==="/"&&(!localStorage.getItem("pbr-intro-seen")||/[?&]intro\\b/.test(location.search)))document.documentElement.classList.add("intro-play")}catch(e){}`,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <ScrollProgressBar />
         <a href="#main-content" className="skip-link">
