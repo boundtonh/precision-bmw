@@ -16,7 +16,19 @@ interface FormValues {
   additionalInfo?: string;
 }
 
-// TODO: wire up email backend (Resend or similar)
+// Web3Forms access key. Public by design: it only allows sending to the inbox it was issued for.
+const WEB3FORMS_ACCESS_KEY = "1526608b-df93-4dca-b701-d41831c45044";
+
+// "2026-11-03" → "Tue, Nov 3, 2026" (parsed as a local date, not UTC)
+function formatDate(value: string) {
+  const [y, m, d] = value.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 
 export default function SchedulingForm() {
   const {
@@ -27,6 +39,9 @@ export default function SchedulingForm() {
   } = useForm<FormValues>();
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const botcheckRef = useRef<HTMLInputElement>(null);
   const [modelQuery, setModelQuery] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
@@ -78,7 +93,7 @@ export default function SchedulingForm() {
     setCommError("");
   };
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     let valid = true;
     if (selectedServices.length === 0) {
       setServiceError("Please select at least one service.");
@@ -90,9 +105,45 @@ export default function SchedulingForm() {
     }
     if (!valid) return;
 
-    // TODO: wire up email backend (Resend or similar)
-    console.log({ ...data, services: selectedServices, preferredComm: selectedComms });
-    setSubmitted(true);
+    const serviceNames = selectedServices.map((slug) =>
+      slug === "other"
+        ? `Other${otherServiceText ? `: ${otherServiceText}` : ""}`
+        : services.find((s) => s.slug === slug)?.name ?? slug
+    );
+
+    setSubmitting(true);
+    setSubmitError("");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `New appointment request — ${data.bmwModel} — ${data.fullName}`,
+          from_name: "Precision BMW Repair Website",
+          replyto: data.email,
+          botcheck: botcheckRef.current?.checked ?? false,
+          "Name": data.fullName,
+          "Phone": data.phone,
+          "Email": data.email,
+          "BMW Model": data.bmwModel,
+          "Services Requested": serviceNames.join(", "),
+          "Preferred Date": formatDate(data.bestDate),
+          "Preferred Contact": selectedComms.join(", "),
+          "City / Town": data.cityTown || "—",
+          "Additional Info": data.additionalInfo || "—",
+        }),
+      });
+      const result = await res.json();
+      if (!res.ok || !result.success) throw new Error(result.message);
+      setSubmitted(true);
+    } catch {
+      setSubmitError(
+        "Sorry, we couldn't send your request. Please try again, or call or text us at 603-679-3883."
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -168,6 +219,15 @@ export default function SchedulingForm() {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
+          {/* Honeypot for Web3Forms spam filtering, hidden from people and screen readers */}
+          <input
+            type="checkbox"
+            ref={botcheckRef}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ display: "none" }}
+          />
           <div className="form-grid">
 
             {/* BMW Model Autocomplete */}
@@ -465,9 +525,20 @@ export default function SchedulingForm() {
           </div>
 
           <div style={{ marginTop: "32px" }}>
-            <button type="submit" className="btn-primary" style={{ minWidth: "220px" }}>
-              Request Appointment
+            <button
+              type="submit"
+              className="btn-primary"
+              style={{ minWidth: "220px", opacity: submitting ? 0.7 : 1 }}
+              disabled={submitting}
+              aria-busy={submitting}
+            >
+              {submitting ? "Sending…" : "Request Appointment"}
             </button>
+            {submitError && (
+              <p className="form-error" role="alert" style={{ marginTop: "16px" }}>
+                {submitError}
+              </p>
+            )}
           </div>
         </form>
       </div>
