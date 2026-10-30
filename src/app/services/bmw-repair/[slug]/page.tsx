@@ -77,6 +77,8 @@ export default async function BmwRepairServicePage({
 
       <InteriorHero
         label="BMW Repair"
+        image={`/images/services/${slug}.webp`}
+        imageAlt={`${content.h1} at Precision BMW Repair in Brentwood NH`}
         h1={content.h1}
         description={content.heroDescription}
         showCta

@@ -40,6 +40,8 @@ export default function RoutineMaintenancePage() {
     <>
       <InteriorHero
         label="Routine Maintenance"
+        image="/images/heroes/routine-maintenance.webp"
+        imageAlt="BMW wheel alignment equipment at Precision BMW Repair in Brentwood NH"
         h1="BMW Routine Maintenance in Southern NH"
         description="Keep your BMW running at peak performance with scheduled maintenance from a dealer-trained technician who works exclusively on BMWs."
         showCta
@@ -71,6 +73,7 @@ export default function RoutineMaintenancePage() {
                   url={svc.url}
                   category={svc.category}
                   shortDescription={svc.shortDescription}
+                  image={svc.image}
                 />
               </ScrollReveal>
             ))}

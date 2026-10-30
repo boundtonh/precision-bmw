@@ -113,6 +113,21 @@ const credentials = [
   },
 ];
 
+const shopPhotos = [
+  {
+    src: "/images/shop/service-bays.webp",
+    alt: "BMW service bays with two-post lifts at Precision BMW Repair in Brentwood NH",
+  },
+  {
+    src: "/images/shop/tire-equipment.webp",
+    alt: "BMW tire mounting and balancing equipment at Precision BMW Repair in Brentwood NH",
+  },
+  {
+    src: "/images/shop/m3-and-plane.webp",
+    alt: "BMW M3 beside Derek's BMW Motorsport-liveried plane near Brentwood NH",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -120,6 +135,8 @@ export default function AboutPage() {
 
       <InteriorHero
         label="About Us"
+        image="/images/heroes/about.webp"
+        imageAlt="BMW service bays and lifts inside Precision BMW Repair in Brentwood NH"
         h1="BMW Master Technician Serving Southern NH"
         description="Precision BMW Repair was built on one principle: BMW owners deserve the same expertise and equipment as a dealership, without the dealership overhead."
       />
@@ -153,6 +170,22 @@ export default function AboutPage() {
                 </ScrollReveal>
               );
             })}
+          </div>
+
+          <div className="photo-grid">
+            {shopPhotos.map((photo, i) => (
+              <ScrollReveal key={photo.src} delay={Math.min((i + 1) * 0.1, 0.5)}>
+                <div className="photo-grid-item">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 400px"
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>

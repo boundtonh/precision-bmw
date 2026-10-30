@@ -20,6 +20,8 @@ export default function SchedulePage() {
     <>
       <InteriorHero
         label="Book Service"
+        image="/images/heroes/schedule.webp"
+        imageAlt="BMW M3 parked outside Precision BMW Repair in Brentwood NH"
         h1="Schedule Your BMW Service Appointment"
         description="Fill out the form below and we'll confirm your appointment within 1 business day. For the fastest response, text or call 603-679-3883."
       />

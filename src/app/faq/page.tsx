@@ -41,6 +41,8 @@ export default function FaqPage() {
 
       <InteriorHero
         label="FAQ"
+        image="/images/heroes/faq.webp"
+        imageAlt="BMW roundel sign in the window at Precision BMW Repair in Brentwood NH"
         h1="BMW Repair Questions — Precision BMW Repair"
         description="Common questions from BMW owners about our services, parts, and process."
       />

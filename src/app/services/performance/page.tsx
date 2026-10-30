@@ -38,6 +38,8 @@ export default function PerformancePage() {
     <>
       <InteriorHero
         label="Performance"
+        image="/images/heroes/performance.webp"
+        imageAlt="Classic BMW M3 serviced at Precision BMW Repair in Brentwood NH"
         h1="BMW Performance Services in Southern NH"
         description="Precision-tuned performance upgrades and diagnostics for BMW drivers who demand more from their vehicle."
         showCta
@@ -68,6 +70,7 @@ export default function PerformancePage() {
                   url={svc.url}
                   category={svc.category}
                   shortDescription={svc.shortDescription}
+                  image={svc.image}
                 />
               </ScrollReveal>
             ))}

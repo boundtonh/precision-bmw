@@ -36,6 +36,8 @@ export default function BmwRepairPage() {
     <>
       <InteriorHero
         label="BMW Repair"
+        image="/images/heroes/bmw-repair.webp"
+        imageAlt="BMW engine on a stand during repair at Precision BMW Repair in Brentwood NH"
         h1="BMW Repair Services in Southern NH"
         description="Expert BMW repair using factory-level diagnostics, OEM parts, and dealer-trained expertise. From brake service to transmission repair."
         showCta
@@ -66,6 +68,7 @@ export default function BmwRepairPage() {
                   url={svc.url}
                   category={svc.category}
                   shortDescription={svc.shortDescription}
+                  image={svc.image}
                 />
               </ScrollReveal>
             ))}

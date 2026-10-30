@@ -1,5 +1,5 @@
 import Link from "next/link";
-import PlaceholderImage from "./PlaceholderImage";
+import Image from "next/image";
 import { getServiceIcon, ChevronRightIcon } from "./Icons";
 import { ServiceCategory } from "@/data/services";
 
@@ -9,6 +9,7 @@ interface ServiceCardProps {
   url: string;
   category: ServiceCategory;
   shortDescription: string;
+  image: string;
 }
 
 const categoryConfig: Record<ServiceCategory, { color: string; label: string }> = {
@@ -17,7 +18,7 @@ const categoryConfig: Record<ServiceCategory, { color: string; label: string }> 
   "performance":         { color: "#C0392B", label: "Performance" },
 };
 
-export default function ServiceCard({ name, slug, url, category, shortDescription }: ServiceCardProps) {
+export default function ServiceCard({ name, slug, url, category, shortDescription, image }: ServiceCardProps) {
   const Icon = getServiceIcon(slug);
   const { color, label } = categoryConfig[category];
 
@@ -30,7 +31,13 @@ export default function ServiceCard({ name, slug, url, category, shortDescriptio
       style={{ borderTopColor: color, borderTopWidth: "3px" }}
     >
       <div className="service-card-bg">
-        <PlaceholderImage variant="dark" />
+        <Image
+          src={image}
+          alt={`BMW ${name.toLowerCase()} at Precision BMW Repair in Brentwood NH`}
+          fill
+          sizes="(max-width: 767px) 100vw, (max-width: 1024px) 50vw, 400px"
+          style={{ objectFit: "cover" }}
+        />
       </div>
       <div className="service-card-overlay" />
       <div className="service-card-content">

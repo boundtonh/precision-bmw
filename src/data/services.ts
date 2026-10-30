@@ -6,6 +6,7 @@ export interface Service {
   category: ServiceCategory;
   shortDescription: string;
   url: string;
+  image: string;
 }
 
 export const services: Service[] = [
@@ -16,6 +17,7 @@ export const services: Service[] = [
     shortDescription:
       "BMW-specified engine oil and OEM filter replacement, including CBS reset and multi-point inspection.",
     url: "/services/routine-maintenance/oil-change",
+    image: "/images/services/oil-change.webp",
   },
   {
     name: "Tire Balancing",
@@ -24,6 +26,7 @@ export const services: Service[] = [
     shortDescription:
       "Precision wheel balancing to BMW tolerances, eliminating vibration and ensuring even tread wear across all four corners.",
     url: "/services/routine-maintenance/tire-balancing",
+    image: "/images/services/tire-balancing.webp",
   },
   {
     name: "Tune-Up",
@@ -32,6 +35,7 @@ export const services: Service[] = [
     shortDescription:
       "Spark plug replacement, air and cabin filter service, and fuel system inspection to restore factory power and efficiency.",
     url: "/services/routine-maintenance/tune-up",
+    image: "/images/services/tune-up.webp",
   },
   {
     name: "Safety Inspection",
@@ -40,6 +44,7 @@ export const services: Service[] = [
     shortDescription:
       "Comprehensive inspection of brakes, suspension, lighting, and fluid levels against BMW factory service standards.",
     url: "/services/routine-maintenance/safety-inspection",
+    image: "/images/services/safety-inspection.webp",
   },
   {
     name: "Diagnostics",
@@ -48,6 +53,7 @@ export const services: Service[] = [
     shortDescription:
       "Full-system BMW diagnostic scan covering engine, transmission, stability control, and chassis modules to pinpoint faults with factory-level accuracy.",
     url: "/services/bmw-repair/diagnostics",
+    image: "/images/services/diagnostics.webp",
   },
   {
     name: "Brake Service",
@@ -56,6 +62,7 @@ export const services: Service[] = [
     shortDescription:
       "BMW-spec pad and rotor replacement with electronic brake pad reset, brake fluid flush, and caliper inspection.",
     url: "/services/bmw-repair/brake-service",
+    image: "/images/services/brake-service.webp",
   },
   {
     name: "Transmission Repair",
@@ -64,6 +71,7 @@ export const services: Service[] = [
     shortDescription:
       "Diagnosis and repair of BMW automatic and manual transmissions, including fluid service, internal component repair, and transmission control module programming.",
     url: "/services/bmw-repair/transmission-repair",
+    image: "/images/services/transmission-repair.webp",
   },
   {
     name: "Electrical Repair",
@@ -72,6 +80,7 @@ export const services: Service[] = [
     shortDescription:
       "Fault tracing and repair across BMW's infotainment, instrument, and body electronics using OEM wiring diagrams and factory-level diagnostic software.",
     url: "/services/bmw-repair/electrical-repair",
+    image: "/images/services/electrical-repair.webp",
   },
   {
     name: "Tires & Alignment",
@@ -80,6 +89,7 @@ export const services: Service[] = [
     shortDescription:
       "Four-wheel alignment to BMW factory geometry specs with run-flat-compatible mounting and TPMS service.",
     url: "/services/bmw-repair/tires-alignment",
+    image: "/images/services/tires-alignment.webp",
   },
   {
     name: "A/C & Heating",
@@ -88,6 +98,7 @@ export const services: Service[] = [
     shortDescription:
       "Current-spec refrigerant service, compressor diagnosis, and BMW climate control system repair to restore factory performance.",
     url: "/services/bmw-repair/ac-heating",
+    image: "/images/services/ac-heating.webp",
   },
   {
     name: "Steering & Suspension",
@@ -96,6 +107,7 @@ export const services: Service[] = [
     shortDescription:
       "Control arm, thrust arm, and damper replacement with four-wheel alignment, restoring BMW's signature dynamic handling.",
     url: "/services/bmw-repair/steering-suspension",
+    image: "/images/services/steering-suspension.webp",
   },
   {
     name: "BMW Diagnostics",
@@ -104,6 +116,7 @@ export const services: Service[] = [
     shortDescription:
       "Advanced factory-level data logging to establish a precise baseline of engine, drivetrain, and chassis performance before modification.",
     url: "/services/performance/bmw-diagnostics",
+    image: "/images/services/bmw-diagnostics.webp",
   },
   {
     name: "Performance Upgrades",
@@ -112,5 +125,6 @@ export const services: Service[] = [
     shortDescription:
       "ECU and TCU tuning, intake, exhaust, and cooling upgrades engineered for BMW's turbocharged and inline-six platforms.",
     url: "/services/performance/performance-upgrades",
+    image: "/images/services/performance-upgrades.webp",
   },
 ];

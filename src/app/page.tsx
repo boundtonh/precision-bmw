@@ -376,6 +376,7 @@ export default function HomePage() {
                   url={svc.url}
                   category={svc.category}
                   shortDescription={svc.shortDescription}
+                  image={svc.image}
                 />
               </ScrollReveal>
             ))}
