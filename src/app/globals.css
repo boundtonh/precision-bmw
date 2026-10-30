@@ -458,6 +458,7 @@ html.js .hero-ctas-animate.active {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0; /* let wide children (e.g. the date chip row) scroll instead of stretching the grid */
 }
 .form-group.full { grid-column: 1 / -1; }
 .form-label {
@@ -567,6 +568,176 @@ html.js .hero-ctas-animate.active {
   border-color: var(--color-accent);
   color: var(--color-text);
   background: rgba(28, 105, 212, 0.08);
+}
+
+/* Date picker (day chips + calendar) */
+.date-picker { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.date-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.date-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 68px;
+  padding: 10px 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-family: var(--font-display), sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+.date-chip:hover { border-color: #444; color: var(--color-text); }
+.date-chip.selected {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+  background: rgba(28, 105, 212, 0.12);
+}
+.date-chip:focus-visible,
+.date-calendar-day:focus-visible,
+.date-calendar-nav:focus-visible,
+.date-picker-toggle:focus-visible {
+  outline: 2px solid #1C69D4;
+  outline-offset: 2px;
+}
+.date-chip-weekday,
+.date-chip-month {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.date-chip-day {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.date-chip.selected .date-chip-weekday { color: var(--color-accent-hover); }
+.date-chip-skeleton {
+  min-width: 68px;
+  min-height: 72px;
+  cursor: default;
+  pointer-events: none;
+}
+.date-picker-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+}
+.date-picker-summary { font-size: 13px; color: var(--color-muted); }
+.date-picker-toggle {
+  background: none;
+  border: none;
+  padding: 4px 0;
+  color: var(--color-accent-hover);
+  font-family: var(--font-display), sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.date-picker-toggle:hover { text-decoration: underline; }
+
+.date-calendar {
+  max-width: 340px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg);
+  padding: 16px;
+}
+.date-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.date-calendar-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.date-calendar-nav {
+  width: 36px;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+.date-calendar-nav:hover:not(:disabled) { border-color: var(--color-accent); }
+.date-calendar-nav:disabled { opacity: 0.3; cursor: default; }
+.date-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+.date-calendar-weekday {
+  font-size: 11px;
+  font-weight: 500;
+  color: #666;
+  padding-bottom: 4px;
+}
+.date-calendar-day {
+  aspect-ratio: 1;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-display), sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+}
+.date-calendar-day:hover:not(:disabled) { border-color: var(--color-accent); }
+.date-calendar-day.selected {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  font-weight: 700;
+}
+.date-calendar-day:disabled {
+  color: #444;
+  text-decoration: line-through;
+  cursor: default;
+}
+
+/* Mobile: chips become one swipeable row */
+@media (max-width: 768px) {
+  .date-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    padding: 2px 32px 4px 2px;
+    margin: -2px 0 -4px -2px;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 40px), transparent);
+  }
+  .date-chips::-webkit-scrollbar { display: none; }
+  .date-chip, .date-chip-skeleton { flex: 0 0 auto; scroll-snap-align: start; }
+  .date-calendar { max-width: none; }
+}
+
+/* Mobile form polish */
+@media (max-width: 768px) {
+  /* 16px stops iOS Safari zooming in when a field is focused */
+  .form-input { font-size: 16px; }
+  .comm-btn { flex: 1; }
+}
+@media (max-width: 480px) {
+  .services-multiselect { grid-template-columns: 1fr; }
+  .quick-contact-btns { width: 100%; }
+  .quick-contact-btns > a { flex: 1; justify-content: center; }
+  .form-submit { width: 100%; }
 }
 
 .quick-contact-strip {

@@ -1,10 +1,11 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { bmwModels } from "@/data/bmwModels";
 import { services } from "@/data/services";
 import { getServiceIcon, PhoneIcon, MessageIcon, WrenchIcon } from "./Icons";
 import SectionHeader from "./SectionHeader";
+import DatePicker, { formatDate, isBookable } from "./DatePicker";
 
 interface FormValues {
   bmwModel: string;
@@ -19,22 +20,12 @@ interface FormValues {
 // Web3Forms access key. Public by design: it only allows sending to the inbox it was issued for.
 const WEB3FORMS_ACCESS_KEY = "1526608b-df93-4dca-b701-d41831c45044";
 
-// "2026-11-03" → "Tue, Nov 3, 2026" (parsed as a local date, not UTC)
-function formatDate(value: string) {
-  const [y, m, d] = value.split("-").map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString("en-US", {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
 export default function SchedulingForm() {
   const {
     register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm<FormValues>();
 
@@ -50,8 +41,6 @@ export default function SchedulingForm() {
   const [serviceError, setServiceError] = useState("");
   const [commError, setCommError] = useState("");
   const autocompleteRef = useRef<HTMLDivElement>(null);
-
-  const today = new Date().toISOString().split("T")[0];
 
   const suggestions = modelQuery
     ? bmwModels.filter((m) =>
@@ -345,23 +334,28 @@ export default function SchedulingForm() {
             </div>
 
             {/* Best Date */}
-            <div className="form-group">
-              <label htmlFor="bestDate" className="form-label">
+            <div className="form-group full">
+              <span id="bestDate-label" className="form-label">
                 Preferred Date<span className="required-star">*</span>
-              </label>
-              <input
-                id="bestDate"
-                type="date"
-                min={today}
-                aria-required="true"
-                aria-describedby={errors.bestDate ? "bestDate-error" : undefined}
-                className={`form-input${errors.bestDate ? " error" : ""}`}
-                style={{ colorScheme: "dark" }}
-                {...register("bestDate", {
+              </span>
+              <Controller
+                name="bestDate"
+                control={control}
+                defaultValue=""
+                rules={{
                   required: "Please select a preferred date.",
                   validate: (v) =>
-                    v >= today || "Date cannot be in the past.",
-                })}
+                    isBookable(v, new Date()) || "Please choose an upcoming weekday.",
+                }}
+                render={({ field }) => (
+                  <DatePicker
+                    value={field.value}
+                    onChange={field.onChange}
+                    labelledBy="bestDate-label"
+                    invalid={!!errors.bestDate}
+                    describedBy={errors.bestDate ? "bestDate-error" : undefined}
+                  />
+                )}
               />
               {errors.bestDate && (
                 <span id="bestDate-error" className="form-error" role="alert">
@@ -421,7 +415,7 @@ export default function SchedulingForm() {
             </div>
 
             {/* Email */}
-            <div className="form-group">
+            <div className="form-group full">
               <label htmlFor="email" className="form-label">
                 Email<span className="required-star">*</span>
               </label>
@@ -527,7 +521,7 @@ export default function SchedulingForm() {
           <div style={{ marginTop: "32px" }}>
             <button
               type="submit"
-              className="btn-primary"
+              className="btn-primary form-submit"
               style={{ minWidth: "220px", opacity: submitting ? 0.7 : 1 }}
               disabled={submitting}
               aria-busy={submitting}
