@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import InteriorHero from "@/components/InteriorHero";
+import SectionBgImage from "@/components/SectionBgImage";
 import SectionHeader from "@/components/SectionHeader";
 import ScrollReveal from "@/components/ScrollReveal";
 import SchedulingForm from "@/components/SchedulingForm";
@@ -296,12 +297,16 @@ export default function AboutPage() {
 
       {/* ── OUR PROMISE ──────────────────────────────────────── */}
       <section
-        className="section"
+        className="section section-with-bg"
         style={{
           background: "var(--color-bg)",
           borderTop: "1px solid var(--color-border)",
         }}
       >
+        <SectionBgImage
+          src="/images/shop/oem-parts-label.webp"
+          alt="Factory BMW label warning against non-approved parts, on a BMW serviced at Precision BMW Repair in Brentwood NH"
+        />
         <div className="container" style={{ maxWidth: "800px" }}>
           <ScrollReveal>
             <SectionHeader

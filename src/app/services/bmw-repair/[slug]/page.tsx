@@ -6,6 +6,7 @@ import {
   getServicesByCategory,
 } from "@/data/serviceContent";
 import InteriorHero from "@/components/InteriorHero";
+import SectionBgImage from "@/components/SectionBgImage";
 import SectionHeader from "@/components/SectionHeader";
 import ScrollReveal from "@/components/ScrollReveal";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
@@ -116,12 +117,16 @@ export default async function BmwRepairServicePage({
 
       {/* Why Precision BMW */}
       <section
-        className="section"
+        className="section section-with-bg"
         style={{
           background: "var(--color-surface)",
           borderTop: "1px solid var(--color-border)",
         }}
       >
+        <SectionBgImage
+          src="/images/shop/oem-part-installed.webp"
+          alt="Genuine BMW Group part installed during a repair at Precision BMW Repair in Brentwood NH"
+        />
         <div className="container" style={{ maxWidth: "860px" }}>
           <ScrollReveal>
             <SectionHeader
