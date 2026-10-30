@@ -13,15 +13,8 @@ const steps = [
 
 export default function HeroReady() {
   useEffect(() => {
-    // Add .animating to set opacity:0 via CSS, then force a reflow so the
-    // browser commits that state before we trigger the transition
-    steps.forEach(({ cls }) => {
-      document.querySelector(`.${cls}`)?.classList.add("animating");
-    });
-
-    // offsetHeight read forces a reflow — required on iOS Safari to ensure
-    // the "from" state is committed before the transition-triggering class fires
-    void document.body.offsetHeight;
+    // Hero layers are already hidden from first paint (html.js in globals.css),
+    // so the "from" state is committed; adding .active triggers each transition.
 
     let timers: ReturnType<typeof setTimeout>[] = [];
     const start = () => {

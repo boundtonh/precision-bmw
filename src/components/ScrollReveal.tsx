@@ -20,9 +20,7 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
-    // Add .animating to hide via CSS, reflow to commit state, then observe
-    el.classList.add("animating");
-    void el.offsetHeight;
+    // Already hidden from first paint via html.js (globals.css); reveal on entry
 
     if (!("IntersectionObserver" in window)) {
       el.classList.add("visible");

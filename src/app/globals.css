@@ -294,40 +294,44 @@ button { font-family: var(--font-display), sans-serif; cursor: pointer; border: 
   height: 100%;
 }
 
-/* Scroll Reveal — visible by default, JS adds .animating then .visible */
-.reveal.animating {
+/* Animations: content is visible by default. The inline script in layout.tsx adds
+   html.js before first paint, so elements start hidden with no flash. If the app
+   hasn't hydrated within 5s that script removes html.js and everything shows. */
+
+/* Scroll Reveal — JS adds .visible when the element enters the viewport */
+html.js .reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-.reveal.animating.visible {
+html.js .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Hero — visible by default, JS adds .animating then .active */
-.hero-bg-animate.animating {
+/* Hero — HeroReady adds .active to each layer in sequence */
+html.js .hero-bg-animate {
   opacity: 0;
   transform: scale(1.12);
   transition: opacity 2.4s ease, transform 2.4s ease;
 }
-.hero-bg-animate.active { opacity: 1; transform: scale(1); }
+html.js .hero-bg-animate.active { opacity: 1; transform: scale(1); }
 
-.hero-overlay-animate.animating { opacity: 0; transition: opacity 0.5s ease; }
-.hero-overlay-animate.active    { opacity: 1; }
+html.js .hero-overlay-animate { opacity: 0; transition: opacity 0.5s ease; }
+html.js .hero-overlay-animate.active { opacity: 1; }
 
-.hero-trustbar-animate.animating,
-.hero-h1-animate.animating,
-.hero-sub-animate.animating,
-.hero-ctas-animate.animating {
+html.js .hero-trustbar-animate,
+html.js .hero-h1-animate,
+html.js .hero-sub-animate,
+html.js .hero-ctas-animate {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.hero-trustbar-animate.active,
-.hero-h1-animate.active,
-.hero-sub-animate.active,
-.hero-ctas-animate.active {
+html.js .hero-trustbar-animate.active,
+html.js .hero-h1-animate.active,
+html.js .hero-sub-animate.active,
+html.js .hero-ctas-animate.active {
   opacity: 1;
   transform: translateY(0);
 }
