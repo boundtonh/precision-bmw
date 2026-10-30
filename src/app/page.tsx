@@ -124,11 +124,12 @@ export default function HomePage() {
           style={{ position: "absolute", inset: 0 }}
         >
           <Image
-            src="/images/hero/hero-image.jpg"
-            alt="BMW repair shop at Precision BMW Repair in Brentwood NH"
+            src="/images/hero/hero-e30-m3.webp"
+            alt="Classic BMW E30 M3 serviced at Precision BMW Repair in Brentwood NH"
             fill
             priority
-            style={{ objectFit: "cover", objectPosition: "center" }}
+            sizes="100vw"
+            style={{ objectFit: "cover", objectPosition: "35% center" }}
           />
         </div>
 
