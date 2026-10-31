@@ -35,13 +35,13 @@ export const allServiceContent: ServicePageContent[] = [
   {
     slug: "tire-balancing",
     category: "routine-maintenance",
-    h1: "BMW Tire Balancing in Southern NH",
+    h1: "BMW Tire Balancing & Wheel Alignment in Southern NH",
     metaTitle:
       "BMW Tire Balancing in Southern NH | Precision BMW Repair",
     metaDescription:
       "Precision wheel balancing to BMW tolerances. Eliminates vibration and ensures even tread wear. Serving BMW owners across Southern NH.",
     heroDescription:
-      "Vibration at highway speed is a symptom, not a feature. We balance to BMW tolerances using calibrated equipment — not approximations.",
+      "Our BMW tire balancing and wheel alignment services help eliminate vibrations, improve handling, and promote even tire wear. Using advanced equipment and BMW-specific specifications, we help deliver the smooth, confident ride your BMW was engineered for.",
     included: [
       "Static and dynamic balance correction on a calibrated computerized balancer",
       "Road force variation measurement to detect stiff spots in tires",

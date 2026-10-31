@@ -9,11 +9,9 @@ import SchedulingForm from "@/components/SchedulingForm";
 import JsonLd from "@/components/JsonLd";
 import {
   CheckIcon,
-  AwardIcon,
   ShieldIcon,
   WrenchIcon,
   CogIcon,
-  UserIcon,
 } from "@/components/Icons";
 
 export const revalidate = false;
@@ -71,19 +69,9 @@ const shopFeatures = [
     desc: "BMW-specific diagnostic computers, factory-level diagnostic software, and OEM service tools.",
   },
   {
-    icon: AwardIcon,
-    title: "Warranty on All Work",
-    desc: "Every repair and maintenance service is backed by our warranty on parts and labor.",
-  },
-  {
-    icon: UserIcon,
-    title: "You Work With the Owner",
-    desc: "Direct communication with Derek on every visit. No service writers, no runaround.",
-  },
-  {
     icon: CheckIcon,
-    title: "NH & ME State Inspections",
-    desc: "Licensed to perform New Hampshire and Maine state inspection stickers.",
+    title: "Complete Safety Inspections",
+    desc: "NH State Inspections have been paused, but your safety shouldn't be.",
   },
 ];
 
@@ -124,8 +112,8 @@ const shopPhotos = [
     alt: "BMW tire mounting and balancing equipment at Precision BMW Repair in Brentwood NH",
   },
   {
-    src: "/images/shop/m3-and-plane.webp",
-    alt: "BMW M3 beside Derek's BMW Motorsport-liveried plane near Brentwood NH",
+    src: "/images/shop/shop-exterior.webp",
+    alt: "BMW Alpina B7 parked outside Precision BMW Repair at 25 Commercial Drive in Brentwood NH",
   },
 ];
 
@@ -156,7 +144,7 @@ export default function AboutPage() {
             />
           </ScrollReveal>
 
-          <div className="icon-grid">
+          <div className="icon-grid icon-grid-2">
             {shopFeatures.map((feature, i) => {
               const Icon = feature.icon;
               return (
@@ -325,9 +313,9 @@ export default function AboutPage() {
             >
               When you bring your BMW to Precision BMW Repair, you are working
               directly with the owner — a BMW-trained technician with over 30 years of
-              experience. Every part installed is a genuine OEM BMW part. Every repair
-              is backed by our warranty. Every interaction is direct, honest, and
-              technically precise. No service writers. No guessing. No shortcuts.
+              experience. Every part installed is a genuine OEM BMW part. Every
+              interaction is direct, honest, and technically precise. No guessing.
+              No shortcuts.
             </p>
             <div style={{ textAlign: "center" }}>
               <Link href="/schedule" className="btn-primary">

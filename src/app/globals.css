@@ -399,6 +399,8 @@ html.js .hero-ctas-animate.active {
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
+.icon-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.icon-grid > .reveal > .credential-item { height: 100%; }
 @media (max-width: 768px) {
   .icon-grid { grid-template-columns: repeat(2, 1fr); }
 }
