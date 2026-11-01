@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { bmwModels } from "@/data/bmwModels";
-import { services } from "@/data/services";
+import { visibleServices as services } from "@/data/services";
 import { getServiceIcon, PhoneIcon, MessageIcon, WrenchIcon } from "./Icons";
 import SectionHeader from "./SectionHeader";
 import DatePicker, { formatDate, isBookable } from "./DatePicker";

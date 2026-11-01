@@ -20,7 +20,7 @@ export const services: Service[] = [
     image: "/images/services/oil-change.webp",
   },
   {
-    name: "Tire Balancing",
+    name: "Wheel Alignment and Balancing",
     slug: "tire-balancing",
     category: "routine-maintenance",
     shortDescription:
@@ -33,7 +33,7 @@ export const services: Service[] = [
     slug: "tune-up",
     category: "routine-maintenance",
     shortDescription:
-      "Spark plug replacement, air and cabin filter service, and fuel system inspection to restore factory power and efficiency.",
+      "With decades of hands-on BMW experience, Derek knows what it takes to keep your BMW performing at its best. Expert service, honest recommendations, and no unnecessary upselling.",
     url: "/services/routine-maintenance/tune-up",
     image: "/images/services/tune-up.webp",
   },
@@ -110,6 +110,15 @@ export const services: Service[] = [
     image: "/images/services/steering-suspension.webp",
   },
   {
+    name: "Major Engine Repair",
+    slug: "major-engine-repair",
+    category: "bmw-repair",
+    shortDescription:
+      "VANOS, timing chain, camshaft, valvetrain, and internal engine repairs, diagnosed and performed correctly by a BMW factory-trained technician.",
+    url: "/services/bmw-repair/major-engine-repair",
+    image: "/images/services/major-engine-repair.webp",
+  },
+  {
     name: "BMW Diagnostics",
     slug: "bmw-diagnostics",
     category: "performance",
@@ -128,3 +137,10 @@ export const services: Service[] = [
     image: "/images/services/performance-upgrades.webp",
   },
 ];
+
+// The Performance category is hidden for now (its pages redirect in next.config.ts).
+// Use this list anywhere services are shown to visitors.
+export const HIDDEN_CATEGORIES: ServiceCategory[] = ["performance"];
+export const visibleServices = services.filter(
+  (s) => !HIDDEN_CATEGORIES.includes(s.category)
+);

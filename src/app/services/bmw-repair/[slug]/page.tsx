@@ -12,7 +12,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import SchedulingForm from "@/components/SchedulingForm";
 import JsonLd from "@/components/JsonLd";
-import { CheckIcon } from "@/components/Icons";
+import {
+  WarningSigns,
+  ServiceDetails,
+  WhyParagraphs,
+} from "@/components/ServiceSections";
 
 export const revalidate = false;
 
@@ -77,7 +81,7 @@ export default async function BmwRepairServicePage({
       <JsonLd data={serviceSchema} />
 
       <InteriorHero
-        label="BMW Repair"
+        label={content.heroLabel ?? "BMW Repair"}
         image={`/images/services/${slug}.webp`}
         imageAlt={`${content.h1} at Precision BMW Repair in Brentwood NH`}
         h1={content.h1}
@@ -85,35 +89,8 @@ export default async function BmwRepairServicePage({
         showCta
       />
 
-      {/* What's Included */}
-      <section
-        className="section"
-        style={{
-          background: "var(--color-bg)",
-          borderTop: "1px solid var(--color-border)",
-        }}
-      >
-        <div className="container">
-          <ScrollReveal>
-            <SectionHeader
-              label="Service Details"
-              headline="What's Included"
-              subheadline={`Every ${content.h1} at Precision BMW Repair covers the following.`}
-            />
-          </ScrollReveal>
-
-          <div className="included-grid">
-            {content.included.map((item, i) => (
-              <ScrollReveal key={i} delay={Math.min(i * 0.08, 0.4)}>
-                <div className="included-item">
-                  <CheckIcon size={16} className="included-item-icon" />
-                  <p className="included-item-text">{item}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WarningSigns content={content} />
+      <ServiceDetails content={content} />
 
       {/* Why Precision BMW */}
       <section
@@ -131,18 +108,10 @@ export default async function BmwRepairServicePage({
           <ScrollReveal>
             <SectionHeader
               label="Why Precision BMW"
-              headline="Genuine OEM BMW Parts — No Aftermarket"
+              headline={content.whyHeadline ?? "Genuine OEM BMW Parts — No Aftermarket"}
             />
             <div className="trust-card">
-              <p
-                style={{
-                  fontSize: "clamp(14px, 1.8vw, 16px)",
-                  color: "var(--color-muted)",
-                  lineHeight: 1.8,
-                }}
-              >
-                {content.whyParagraph}
-              </p>
+              <WhyParagraphs content={content} />
               <div style={{ marginTop: "24px" }}>
                 <Link href="/schedule" className="btn-primary">
                   Schedule This Service

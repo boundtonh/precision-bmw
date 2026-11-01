@@ -16,11 +16,6 @@ const NAV_CATEGORIES = [
     key: "bmw-repair",
     href: "/services/bmw-repair",
   },
-  {
-    label: "Performance",
-    key: "performance",
-    href: "/services/performance",
-  },
 ] as const;
 
 export default function Navbar() {

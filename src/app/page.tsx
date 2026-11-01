@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { services } from "@/data/services";
+import { visibleServices } from "@/data/services";
 import { getServiceIcon, CheckIcon, StarIcon } from "@/components/Icons";
 import ServiceCard from "@/components/ServiceCard";
 import SchedulingForm from "@/components/SchedulingForm";
@@ -56,14 +56,6 @@ const localBusinessSchema = {
     "BMW-exclusive repair and maintenance facility in Brentwood, NH. Dealer-trained technician since 1992, OEM parts only, warranty on all work.",
 };
 
-const routineServices = services.filter(
-  (s) => s.category === "routine-maintenance"
-);
-const repairServices = services.filter((s) => s.category === "bmw-repair");
-const performanceServices = services.filter(
-  (s) => s.category === "performance"
-);
-
 const trustItems = [
   "4.8 Stars · 50+ Google Reviews",
   "BMW-Exclusive Since 1992",
@@ -83,22 +75,15 @@ const categories = [
     key: "routine-maintenance",
     label: "Routine Maintenance",
     href: "/services/routine-maintenance",
-    desc: "Oil changes, tire balancing, tune-ups, and safety inspections — done to BMW specification.",
-    count: 4,
+    desc: "Oil changes, wheel alignment and balancing, tune-ups, and safety inspections — done to BMW specification.",
+    count: visibleServices.filter((s) => s.category === "routine-maintenance").length,
   },
   {
     key: "bmw-repair",
     label: "BMW Repair",
     href: "/services/bmw-repair",
     desc: "Full-service BMW repair with factory diagnostics, OEM parts, and dealer-trained expertise.",
-    count: 7,
-  },
-  {
-    key: "performance",
-    label: "Performance",
-    href: "/services/performance",
-    desc: "ECU tuning, performance upgrades, and advanced diagnostics for BMW enthusiasts.",
-    count: 2,
+    count: visibleServices.filter((s) => s.category === "bmw-repair").length,
   },
 ];
 
@@ -335,7 +320,7 @@ export default function HomePage() {
             <SectionHeader
               label="Our Services"
               headline="Complete BMW Care in One Shop"
-              subheadline="From routine oil changes to advanced performance upgrades — every service performed to BMW factory specification."
+              subheadline="From routine oil changes to major engine repair — every service performed to BMW factory specification."
             />
           </ScrollReveal>
 
@@ -371,7 +356,7 @@ export default function HomePage() {
             </h3>
           </ScrollReveal>
           <div className="service-grid">
-            {services.map((svc, i) => (
+            {visibleServices.map((svc, i) => (
               <ScrollReveal key={svc.slug} delay={Math.min(i * 0.05, 0.5)}>
                 <ServiceCard
                   name={svc.name}

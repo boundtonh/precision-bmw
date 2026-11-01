@@ -10,6 +10,6 @@ module.exports = {
   },
   changefreq: "monthly",
   priority: 0.7,
-  exclude: [],
+  exclude: ["/services/performance", "/services/performance/*"],
   outDir: "./public",
 };

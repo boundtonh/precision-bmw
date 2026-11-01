@@ -1,12 +1,32 @@
+export interface DetailItem {
+  title: string;
+  desc: string;
+}
+
 export interface ServicePageContent {
   slug: string;
   category: "routine-maintenance" | "bmw-repair" | "performance";
   h1: string;
   metaTitle: string;
   metaDescription: string;
+  /** Hero label override (defaults to the category name) */
+  heroLabel?: string;
   heroDescription: string;
-  included: string[];
-  whyParagraph: string;
+  /** Optional "Know the Warning Signs" section shown before Service Details */
+  warningSigns?: {
+    headline: string;
+    intro: string;
+    items: DetailItem[];
+    outro: string;
+  };
+  /** Service Details section overrides */
+  detailsLabel?: string;
+  detailsHeadline?: string;
+  detailsIntro?: string;
+  included: string[] | DetailItem[];
+  whyHeadline?: string;
+  /** One string per paragraph */
+  whyParagraph: string | string[];
 }
 
 export const allServiceContent: ServicePageContent[] = [
@@ -77,20 +97,18 @@ export const allServiceContent: ServicePageContent[] = [
   {
     slug: "safety-inspection",
     category: "routine-maintenance",
-    h1: "BMW Safety Inspection in Southern NH",
+    h1: "BMW Safety Inspections in Southern NH",
     metaTitle:
       "BMW Safety Inspection in Southern NH | Precision BMW Repair",
-    metaDescription:
-      "Comprehensive BMW safety inspection covering brakes, suspension, lighting, and fluids. NH and ME state inspections available. Brentwood NH.",
-    heroDescription:
-      "A thorough safety inspection by a BMW-trained technician who knows exactly what to look for — and what the factory considers acceptable versus overdue.",
+    metaDescription: "Comprehensive BMW safety inspection covering brakes, tires, suspension, CV boots, fuel lines, and other critical systems. Brentwood NH — serving Southern NH.",
+    heroDescription: "NH-mandated inspections may be on hold, but your safety shouldn't be. Derek provides thorough BMW safety checks, examining brakes, tires, suspension components, CV boots, and other critical systems. No upselling or pressure—just honest findings and the information you need to make informed decisions about your BMW's safety.",
     included: [
       "Brake pad thickness measurement and rotor condition assessment",
       "Suspension inspection: control arms, thrust arms, ball joints, wheel bearings",
       "Steering system inspection — play, rack condition, tie rod ends",
       "Exterior lighting verification (all bulbs, LEDs, adaptive headlights)",
       "Brake, coolant, power steering, and washer fluid level check",
-      "New Hampshire and Maine state inspection sticker (on qualifying vehicles)",
+      "Fuel lines and fuel-related components",
     ],
     whyParagraph:
       "BMW suspension geometry uses eccentric bolts, offset bearings, and specific bushing designs that behave differently from other makes. A technician unfamiliar with BMW will often overlook wear that is specific to each BMW model and generation. Derek knows the common failure points on every BMW model line and inspects accordingly — not generically.",
@@ -105,18 +123,36 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW Diagnostics in Southern NH | Precision BMW Repair",
     metaDescription:
       "Factory-level BMW diagnostic scanning. Full system fault extraction, live data, and root cause analysis. Brentwood NH — serving all of Southern NH.",
-    heroDescription:
-      "Generic OBD-II readers miss 90% of what BMW-specific diagnostic software can see. We scan every module, extract every fault, and find the root cause — not just the code.",
+    heroDescription: "Your BMW is a sophisticated machine that requires more than a basic code reader. Using advanced BMW-specific diagnostic equipment and decades of hands-on experience, Derek goes beyond fault codes to identify the root cause of problems—helping you avoid unnecessary repairs and get the job done right.",
+    detailsIntro: "At Precision BMW Repair, diagnostics go beyond simply reading fault codes. Derek combines advanced BMW-specific diagnostic equipment with decades of hands-on experience to identify problems accurately and recommend the right solutions.",
     included: [
-      "Full BMW factory-level vehicle scan across all electronic control modules",
-      "Fault code extraction, documentation, and root cause analysis",
-      "Live data stream monitoring: engine control module, transmission control module, stability control, chassis, body",
-      "Component activation and output tests to isolate failed hardware",
-      "Software version check and available update identification",
-      "Detailed written diagnostic report with recommended repair path",
+      {
+        title: "BMW-Specific Computer Diagnostics",
+        desc: "Advanced scanning of your BMW's electronic systems to identify stored fault codes, warning lights, and potential problems.",
+      },
+      {
+        title: "Check Engine & Warning Light Diagnosis",
+        desc: "Investigating the cause of check engine lights, drivetrain warnings, ABS alerts, and other dashboard messages.",
+      },
+      {
+        title: "Engine & Performance Troubleshooting",
+        desc: "Identifying the causes of rough idling, misfires, hesitation, reduced power, and poor engine performance.",
+      },
+      {
+        title: "Electrical & Sensor Testing",
+        desc: "Evaluating sensors, electrical connections, control modules, and related components to help pinpoint malfunctions.",
+      },
+      {
+        title: "Live Data & System Analysis",
+        desc: "Monitoring real-time vehicle information and testing system operation to better understand what's causing a problem.",
+      },
+      {
+        title: "Clear Explanations & Honest Recommendations",
+        desc: "Derek explains what he finds, what needs attention, and what can wait. No guesswork, no unnecessary repairs, and no upselling.",
+      },
     ],
-    whyParagraph:
-      "BMW vehicles use proprietary communication networks that only BMW-specific diagnostic software can fully communicate with. Derek uses the same factory-level diagnostic software as BMW dealerships — no aftermarket alternatives. This is the difference between guessing and knowing. Accurate diagnosis means you only pay for repairs you actually need.",
+    whyHeadline: "BMW Expertise. Accurate Diagnostics. Honest Answers.",
+    whyParagraph: "Diagnosing a BMW takes more than plugging in a scanner. With decades of hands-on BMW experience and advanced BMW-specific diagnostic equipment, Derek knows how to look beyond fault codes to identify the real problem. You'll get a clear explanation of what he finds and honest recommendations on what actually needs attention. No guesswork, no unnecessary repairs, and no upselling.",
   },
   {
     slug: "brake-service",
@@ -126,18 +162,36 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW Brake Service & Repair in Southern NH | Precision BMW Repair",
     metaDescription:
       "BMW brake pad and rotor replacement with electronic reset, caliper service, and fluid flush. OEM parts only. Serving Southern NH and Northern MA.",
-    heroDescription:
-      "BMW's integrated braking electronics require more than a pad swap. We do the job completely — pads, rotors, fluid, and the electronic CBS reset.",
+    heroDescription: "Your BMW's braking system deserves expert attention. With decades of BMW experience, Derek provides thorough brake inspections and professional repairs, including pads, rotors, brake fluid service, and wear sensors. You'll receive honest recommendations based on what your BMW actually needs—no unnecessary repairs or upselling.",
+    detailsIntro: "From routine brake maintenance to more extensive repairs, Derek provides BMW-specific brake service tailored to your vehicle's condition and needs. Services include:",
     included: [
-      "BMW-spec front and/or rear brake pad replacement (OEM only)",
-      "Brake rotor inspection, measurement, and replacement as required",
-      "Electronic brake pad wear sensor replacement where applicable",
-      "Brake pad wear BMW Condition-Based Service (CBS) indicator reset using factory diagnostic software",
-      "Caliper slide pin service, cleaning, and lubrication",
-      "Brake fluid moisture content test and full fluid flush as needed",
+      {
+        title: "Brake Pad Inspection & Replacement",
+        desc: "Front and rear brake pads using genuine BMW parts.",
+      },
+      {
+        title: "Brake Rotor Inspection & Replacement",
+        desc: "Checking rotor condition, wear, and thickness, with replacement when needed.",
+      },
+      {
+        title: "Brake Wear Sensors",
+        desc: "Inspection and replacement of electronic brake pad wear sensors when required.",
+      },
+      {
+        title: "BMW Brake Service Indicator Reset",
+        desc: "Resetting BMW's Condition Based Service (CBS) system following applicable brake service.",
+      },
+      {
+        title: "Brake Caliper Inspection & Service",
+        desc: "Checking calipers, hardware, and moving components for proper operation, wear, and corrosion.",
+      },
+      {
+        title: "Brake Fluid Service",
+        desc: "Checking brake fluid condition and performing complete fluid changes according to BMW maintenance requirements.",
+      },
     ],
-    whyParagraph:
-      "BMW DSC, ABS, and brake assist systems are calibrated for specific pad compounds and rotor thicknesses. Aftermarket pads alter brake bias in ways that affect DSC intervention — a safety concern, not just a performance one. At Precision BMW, every brake job uses genuine OEM pads and rotors. The electronic reset is done properly, not just cancelled with an inexpensive Bluetooth dongle.",
+    whyHeadline: "Genuine BMW Parts. Expert Brake Service.",
+    whyParagraph: "Your BMW's braking system is engineered for precision, performance, and safety. With decades of BMW experience, Derek understands the importance of using genuine BMW brake components and following proper factory service procedures. From brake pads and rotors to electronic wear sensors, every repair is performed with attention to detail. No shortcuts, no unnecessary repairs, and no upselling—just expert service you can trust.",
   },
   {
     slug: "transmission-repair",
@@ -168,39 +222,79 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW Electrical Repair in Southern NH | Precision BMW Repair",
     metaDescription:
       "BMW electrical fault diagnosis and repair using factory-level diagnostic software and OEM wiring diagrams. Body electronics, modules, coding. Southern NH.",
-    heroDescription:
-      "BMW's electrical architecture is complex by design. Diagnosing it requires factory tools, BMW wiring diagrams, and a technician trained by BMW of North America.",
+    heroDescription: "From frustrating electrical glitches to complex system failures, Derek brings decades of BMW experience and specialized diagnostic equipment to finding the source of the problem. No guesswork or unnecessary parts replacement—just accurate troubleshooting, honest recommendations, and repairs done right.",
+    detailsLabel: "Service Details — Electrical Diagnostics & Repair",
+    detailsHeadline: "Common BMW Electrical Problems We Diagnose & Repair",
+    detailsIntro: "BMW electrical problems can affect everything from everyday convenience features to critical vehicle systems. Derek uses his extensive BMW experience and specialized diagnostic equipment to identify the cause and determine the appropriate repair.",
     included: [
-      "BMW factory-level full electrical system scan — all networked control modules",
-      "BMW control module network communication fault isolation",
-      "Ground point testing and voltage drop measurement with BMW diagrams",
-      "Component activation and output tests via factory diagnostic software",
-      "Relay, fuse, and junction box diagnosis",
-      "Module coding, programming, and VIN alignment via factory diagnostic software",
+      {
+        title: "Battery, Charging & Starting Problems",
+        desc: "Diagnosing weak batteries, charging system faults, alternator issues, and intermittent starting problems.",
+      },
+      {
+        title: "Dashboard Warning Lights & Electrical Faults",
+        desc: "Investigating electrical warning messages, malfunction indicators, and unexplained system alerts.",
+      },
+      {
+        title: "Power Windows, Locks & Interior Electronics",
+        desc: "Troubleshooting malfunctioning windows, door locks, mirrors, interior lighting, and other electrical accessories.",
+      },
+      {
+        title: "Wiring, Fuses & Electrical Connections",
+        desc: "Locating damaged wiring, faulty connections, blown fuses, and electrical shorts or intermittent faults.",
+      },
+      {
+        title: "Control Modules & Communication Problems",
+        desc: "Diagnosing electronic control module faults and communication issues between vehicle systems.",
+      },
+      {
+        title: "Intermittent & Hard-to-Find Electrical Problems",
+        desc: "Tracking down unexplained battery drain, electrical components that work intermittently, and other difficult-to-diagnose issues.",
+      },
     ],
-    whyParagraph:
-      "Modern BMWs communicate over multiple proprietary bus networks that share data between 40+ control modules. A fault in one module can cascade into faults across the entire vehicle. Derek trained directly with BMW of North America on these systems and has the BMW wiring diagram database to trace every wire correctly. No guessing. No unnecessary parts.",
+    whyHeadline: "BMW Electrical Expertise You Can Trust",
+    whyParagraph: "Electrical problems can be some of the most frustrating and difficult issues to diagnose. With decades of hands-on experience and training directly from BMW of North America, Derek understands the complexities of BMW electrical systems. He takes the time to identify the source of the problem, explain his findings, and recommend only the repairs you actually need. No unnecessary parts replacement, no upselling—just honest, experienced BMW service.",
   },
   {
     slug: "tires-alignment",
     category: "bmw-repair",
-    h1: "BMW Tires & Alignment in Southern NH",
+    h1: "BMW Tire Balancing & 4-Wheel Alignment in Southern NH",
     metaTitle:
       "BMW Tires & Alignment in Southern NH | Precision BMW Repair",
     metaDescription:
       "Four-wheel BMW alignment to factory geometry specs. Run-flat tire mounting, TPMS service, and balancing. Serving BMW owners across Southern NH.",
-    heroDescription:
-      "BMW alignment specs are model-specific and tight. A few tenths of a degree out of spec causes premature tire wear and alters steering response. We align to BMW factory tolerances.",
+    heroLabel: "BMW Repair — Ride and Vibration Analysis",
+    heroDescription: "Proper tire balancing and precise wheel alignment are essential to your BMW's handling, performance, and ride quality. Derek provides professional tire balancing and 4-wheel alignment using specialized equipment and BMW-specific specifications to help eliminate vibrations, improve steering response, and prevent uneven tire wear. Experience the smooth, confident ride your BMW was engineered to deliver.",
+    detailsHeadline: "BMW Tire Balancing & Alignment Services",
+    detailsIntro: "From highway-speed vibrations to uneven tire wear and steering concerns, Derek provides precision tire balancing and wheel alignment services tailored to your BMW. Services include:",
     included: [
-      "Four-wheel laser alignment to BMW factory camber, caster, and toe specs",
-      "Electronic steering angle sensor reset post-alignment",
-      "Run-flat and conventional tire mounting with calibrated torque sticks",
-      "Wheel balancing on all four corners after tire installation",
-      "TPMS sensor replacement and programming as needed",
-      "Post-alignment test drive to verify straight tracking and steering return",
+      {
+        title: "Precision 4-Wheel Alignment",
+        desc: "Checking and adjusting wheel alignment to BMW factory specifications, including camber, caster, and toe where adjustable.",
+      },
+      {
+        title: "Professional Tire Balancing",
+        desc: "Precision wheel and tire balancing to help eliminate vibrations and deliver a smoother, more comfortable ride.",
+      },
+      {
+        title: "Tire Mounting & Installation",
+        desc: "Professional mounting of conventional and run-flat tires using proper equipment and installation procedures.",
+      },
+      {
+        title: "Tire Wear & Suspension Inspection",
+        desc: "Checking tire wear patterns and related steering and suspension components for issues that may affect alignment.",
+      },
+      {
+        title: "Tire Pressure Monitoring System (TPMS)",
+        desc: "Checking tire pressure monitoring systems and performing sensor replacement or resets when needed.",
+      },
+      {
+        title: "Final Alignment & Road Test",
+        desc: "Verifying alignment measurements and checking steering response, vehicle tracking, and ride quality as appropriate.",
+      },
     ],
-    whyParagraph:
-      "BMW's rear toe and camber settings vary significantly by model and suspension variant. Applying a generic alignment spec to a BMW M3 or 3 Series produces incorrect results. Derek uses BMW-specific alignment specifications for every job, and understands how suspension wear affects alignment — so the root cause is addressed before the alignment is set.",
+    whyHeadline: "Precision Alignment. Smoother Ride. Better Handling.",
+    whyParagraph: "Your BMW was engineered for exceptional handling and ride quality. With decades of BMW experience, Derek understands how proper tire balancing, 4-wheel alignment, and suspension condition all work together. He takes the time to identify the cause of vibrations, uneven tire wear, or steering concerns and uses BMW-specific specifications to get things right. No unnecessary services or upselling—just expert care to keep your BMW driving the way it should.",
   },
   {
     slug: "ac-heating",
@@ -210,18 +304,37 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW A/C & Heating Service in Southern NH | Precision BMW Repair",
     metaDescription:
       "BMW climate control diagnosis and repair — refrigerant service, compressor, climate control module, heater core. Southern NH.",
-    heroDescription:
-      "BMW's integrated automatic heating and air conditioning system is sophisticated by design. Diagnosis requires factory-level tools and a technician who understands it.",
+    heroDescription: "Whether your BMW's air conditioning isn't cooling properly, the heat isn't keeping you warm, or the climate control system isn't working as it should, Derek has the experience to diagnose and repair the problem. With decades of BMW expertise and specialized diagnostic equipment, he provides accurate troubleshooting, honest recommendations, and dependable repairs—without unnecessary services or upselling.",
+    detailsHeadline: "BMW A/C & Heating Services",
+    detailsIntro: "Whether your BMW isn't cooling properly, has weak heat, or struggles to maintain a comfortable cabin temperature, Derek has the experience and equipment to identify the problem and recommend the right repair.",
     included: [
-      "Current-spec refrigerant recovery, vacuum, and recharge to BMW specification",
-      "Compressor clutch engagement and pressure test",
-      "Cabin evaporator and condenser visual inspection",
-      "Climate control module fault scan and actuator output tests via factory diagnostic software",
-      "Cabin microfilter replacement",
-      "Heater core, coolant valve, and blend door function verification",
+      {
+        title: "Air Conditioning Diagnosis & Repair",
+        desc: "Diagnosing poor cooling, warm air from vents, refrigerant leaks, and malfunctioning A/C components.",
+      },
+      {
+        title: "Heating System Diagnosis & Repair",
+        desc: "Troubleshooting insufficient heat, heater core problems, coolant circulation issues, and faulty heating controls.",
+      },
+      {
+        title: "Climate Control System Diagnostics",
+        desc: "Identifying problems with automatic temperature controls, electronic sensors, and climate control components.",
+      },
+      {
+        title: "A/C Refrigerant Service & Leak Detection",
+        desc: "Checking refrigerant levels, locating leaks, and performing proper A/C system evacuation and recharging when needed.",
+      },
+      {
+        title: "Blower Motors & Airflow Problems",
+        desc: "Diagnosing weak airflow, malfunctioning blower motors, unusual fan noises, and air distribution problems.",
+      },
+      {
+        title: "Cabin Air Filters & Ventilation",
+        desc: "Inspecting and replacing cabin microfilters and addressing restricted airflow or ventilation concerns.",
+      },
     ],
-    whyParagraph:
-      "BMW's dual-zone and four-zone climate control systems use blend doors, coolant-control valves, and refrigerant pressure sensors that communicate across BMW's control module network. Diagnosing a failure as 'compressor' without checking actuator output tests is a guess. At Precision BMW, every A/C diagnosis starts with factory-level diagnostic software — not assumptions. OEM parts only, warranty on all work.",
+    whyHeadline: "Complex BMW Systems. Experienced Hands.",
+    whyParagraph: "BMW heating and air conditioning systems are far more sophisticated than most people realize. From electronic climate controls and temperature sensors to compressors, blend doors, and coolant valves, multiple components must work together to keep your cabin comfortable. With decades of BMW experience and factory training, Derek understands how these systems operate and how to diagnose problems accurately. No guesswork, no unnecessary parts replacement—just expert repairs and honest recommendations.",
   },
   {
     slug: "steering-suspension",
@@ -231,18 +344,110 @@ export const allServiceContent: ServicePageContent[] = [
       "BMW Steering & Suspension in Southern NH | Precision BMW Repair",
     metaDescription:
       "BMW suspension repair — control arms, thrust arms, wheel bearings, dampers. Four-wheel alignment included. OEM parts. Southern NH.",
-    heroDescription:
-      "BMW's suspension geometry is what separates a 3 Series from everything else. Restore it with OEM parts and a four-wheel alignment from a dealer-trained technician.",
+    heroDescription: "From classic 3 Series models to today's sophisticated BMW SUVs, steering and suspension systems vary considerably. With decades of BMW experience and factory training, Derek understands these differences and knows how to diagnose worn components, unusual noises, handling problems, and suspension faults. Whether your BMW has a conventional suspension or advanced electronic systems, you'll receive expert attention, accurate diagnostics, and honest repair recommendations.",
+    detailsHeadline: "BMW Steering & Suspension Services",
+    detailsIntro: "From worn suspension components to sophisticated electronic suspension systems, Derek provides expert diagnosis and repair tailored to your BMW's specific model, age, and suspension configuration. Services include:",
     included: [
-      "Front and rear control arm and thrust arm inspection and replacement",
-      "Wheel bearing assessment — play, noise, and load test",
-      "Ball joint condition check and replacement as required",
-      "Damper/strut condition inspection — oil seepage, rebound test",
-      "Stabilizer (anti-roll) bar link and bushing inspection",
-      "Four-wheel alignment to BMW factory specs after all suspension work",
+      {
+        title: "Control Arms, Bushings & Ball Joints",
+        desc: "Inspection and replacement of worn suspension components that can cause clunking, vibrations, uneven tire wear, and poor handling.",
+      },
+      {
+        title: "Shocks, Struts & Suspension Components",
+        desc: "Diagnosing and repairing worn shocks, struts, mounts, and related components that affect ride comfort, stability, and handling.",
+      },
+      {
+        title: "Steering System Diagnosis & Repair",
+        desc: "Identifying and repairing problems with steering racks, tie rods, hydraulic power steering, and electronic steering systems.",
+      },
+      {
+        title: "Air Suspension & Adaptive Suspension Repair",
+        desc: "Expert diagnosis and repair of BMW air suspension, adaptive dampers, ride-height sensors, and electronic suspension controls, including uneven ride height and suspension warning messages.",
+      },
+      {
+        title: "Wheel Bearings & Stabilizer Components",
+        desc: "Inspecting and replacing worn wheel bearings, sway bar links, and bushings that can cause unusual noises, looseness, or unstable handling.",
+      },
+      {
+        title: "4-Wheel Alignment & Suspension Geometry",
+        desc: "Precision wheel alignment using BMW factory specifications to help restore proper handling, steering response, and even tire wear.",
+      },
     ],
-    whyParagraph:
-      "BMW's suspension uses eccentric adjustment bolts, offset bushings, and specific torque sequences that differ from generic procedures. Installing a control arm without the correct torque sequence (tightened at ride height, not hanging) pre-loads bushings incorrectly and shortens their lifespan. Derek does every suspension job to BMW workshop manual specification — not approximations.",
+    whyHeadline: "BMW Suspension Expertise. From Classic to Complex.",
+    whyParagraph: "BMW steering and suspension systems have evolved dramatically over the years. From traditional control arms, bushings, and struts to sophisticated air suspension and electronically controlled damping systems, each requires specialized knowledge and proper repair procedures. With decades of hands-on BMW experience and factory training, Derek understands these differences and knows how to diagnose and repair them correctly. No guesswork, no unnecessary parts replacement—just expert service that restores the ride and handling your BMW was engineered to deliver.",
+  },
+  {
+    slug: "major-engine-repair",
+    category: "bmw-repair",
+    h1: "BMW Major Engine Repair in Southern NH",
+    metaTitle: "BMW Major Engine Repair in Southern NH | Precision BMW Repair",
+    metaDescription: "BMW VANOS, timing chain, camshaft, valvetrain, and internal engine repair by a BMW factory-trained technician. Brentwood NH — serving all of Southern NH.",
+    heroDescription: "From VANOS problems and timing chain issues to worn camshafts, lifters, and complex internal engine repairs, Derek brings decades of BMW experience to some of the most demanding repairs your engine may need. With factory training dating back to 1992, specialized diagnostic equipment, and an in-depth understanding of BMW engines, he focuses on identifying the real problem and performing the repairs correctly—without unnecessary parts replacement or upselling.",
+    warningSigns: {
+      headline: "Is Your BMW Telling You Something Is Wrong?",
+      intro: "Unusual engine noises, rough running, or reduced performance can sometimes indicate problems with internal engine components. Recognizing these symptoms early may help prevent more extensive damage.",
+      items: [
+        {
+          title: "Rattling or ticking noises",
+          desc: "Unusual sounds during startup, idle, or acceleration.",
+        },
+        {
+          title: "Rough idle or engine misfires",
+          desc: "Shaking, hesitation, or inconsistent engine operation.",
+        },
+        {
+          title: "Check engine or drivetrain warnings",
+          desc: "Dashboard alerts that may indicate engine timing or mechanical problems.",
+        },
+        {
+          title: "Loss of power or poor acceleration",
+          desc: "Reduced engine response or unexpected performance changes.",
+        },
+        {
+          title: "Excessive oil consumption or visible leaks",
+          desc: "Oil loss that may indicate worn seals, gaskets, or other mechanical concerns.",
+        },
+        {
+          title: "Engine timing or VANOS faults",
+          desc: "Diagnostic trouble codes that require further investigation to determine the underlying cause.",
+        },
+      ],
+      outro: "These symptoms don't necessarily mean your BMW needs major engine work. Derek will evaluate the problem, explain his findings, and recommend the appropriate next steps.",
+    },
+    detailsHeadline: "BMW Major Engine Repair Services",
+    detailsIntro: "BMW engines are known for their performance and sophisticated engineering, but complex internal components require specialized knowledge when problems arise. Derek provides experienced diagnosis and repair across a wide range of BMW engines, from older naturally aspirated models to modern turbocharged powerplants.",
+    included: [
+      {
+        title: "VANOS System Diagnosis & Repair",
+        desc: "Diagnosing and repairing BMW variable valve timing problems, including VANOS solenoids, actuators, seals, and related components that can affect engine performance and drivability.",
+      },
+      {
+        title: "Timing Chain & Timing Component Repair",
+        desc: "Inspection and replacement of worn timing chains, guides, tensioners, and related components to address timing faults, unusual engine noises, and potential internal engine damage.",
+      },
+      {
+        title: "Camshaft & Valvetrain Repair",
+        desc: "Diagnosing and repairing worn or damaged camshafts, camshaft bearings or bearing surfaces, and related valvetrain components that affect engine operation and performance.",
+      },
+      {
+        title: "Hydraulic Lifters & Valve Train Problems",
+        desc: "Identifying and repairing lifter noise, worn rocker arms or followers, and other valvetrain issues that can cause ticking, rough operation, or reduced engine performance.",
+      },
+      {
+        title: "Cylinder Head & Internal Engine Repairs",
+        desc: "Diagnosis and repair of cylinder head problems, valve-related issues, head gasket failures, and other internal engine concerns requiring specialized mechanical work.",
+      },
+      {
+        title: "Engine Oil Leaks & Mechanical Failures",
+        desc: "Locating and repairing oil leaks from valve covers, timing covers, oil filter housings, and other engine components, along with diagnosing underlying mechanical problems.",
+      },
+    ],
+    whyHeadline: "Complex BMW Engine Repairs. Decades of Experience.",
+    whyParagraph: [
+      "BMW engines are precision-engineered machines, with sophisticated timing systems, variable valve technology, and intricate internal components. From the VANOS systems found in earlier BMW engines to today's advanced turbocharged powerplants, each engine presents its own unique challenges.",
+      "With BMW factory training dating back to 1992 and 14 years of dealership experience, Derek understands the importance of proper diagnosis, specialized tools, and following BMW-specific repair procedures. Whether addressing a timing chain failure, valvetrain problem, or complex internal engine issue, he approaches every repair with the precision and attention to detail it deserves.",
+      "No guesswork, no unnecessary repairs, and no upselling—just experienced BMW engine repair from a technician who knows these engines inside and out.",
+    ],
   },
 
   // ── PERFORMANCE ────────────────────────────────────────────────

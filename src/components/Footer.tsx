@@ -9,9 +9,6 @@ export default function Footer() {
     (s) => s.category === "routine-maintenance"
   );
   const repairServices = services.filter((s) => s.category === "bmw-repair");
-  const performanceServices = services.filter(
-    (s) => s.category === "performance"
-  );
 
   return (
     <footer
@@ -213,53 +210,8 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 4 — Performance + Site Links */}
+          {/* Column 4 — Site Links */}
           <div>
-            <h3
-              style={{
-                fontSize: "11px",
-                fontWeight: 700,
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                color: "var(--color-accent)",
-                marginBottom: "20px",
-              }}
-            >
-              Performance
-            </h3>
-            <ul
-              style={{
-                listStyle: "none",
-                padding: 0,
-                display: "flex",
-                flexDirection: "column",
-                gap: "10px",
-                marginBottom: "32px",
-              }}
-            >
-              {performanceServices.map((svc) => (
-                <li key={svc.slug}>
-                  <Link
-                    href={svc.url}
-                    style={{
-                      fontSize: "13px",
-                      color: "var(--color-muted)",
-                      textDecoration: "none",
-                      transition: "color 0.2s ease",
-                    }}
-                    onMouseEnter={(e) =>
-                      (e.currentTarget.style.color = "#fff")
-                    }
-                    onMouseLeave={(e) =>
-                      (e.currentTarget.style.color = "var(--color-muted)")
-                    }
-                  >
-                    {svc.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
             <h3
               style={{
                 fontSize: "11px",

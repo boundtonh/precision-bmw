@@ -852,6 +852,18 @@ html.js .hero-ctas-animate.active {
   line-height: 1.6;
 }
 
+.included-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.included-item-bg { background: var(--color-bg); }
+.service-note { margin-top: 40px; }
+
 /* Trust card */
 .trust-card {
   background: var(--color-surface);
@@ -864,7 +876,7 @@ html.js .hero-ctas-animate.active {
 /* Category cards */
 .category-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   margin-bottom: 48px;
 }

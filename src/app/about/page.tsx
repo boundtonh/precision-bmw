@@ -78,28 +78,41 @@ const shopFeatures = [
 const credentials = [
   {
     title: "ASE-Certified Technician",
-    desc: "Nationally recognized certification for automotive service excellence.",
+    desc: "Nationally recognized automotive service certification demonstrating technical knowledge and professional competence.",
   },
   {
-    title: "BMW-Trained Since 1992",
-    desc: "Direct training from BMW of North America — the same training as dealer technicians.",
+    title: "BMW Factory-Trained Since 1992",
+    desc: "Specialized training directly from BMW of North America, providing the foundation for decades of BMW expertise.",
   },
   {
     title: "14 Years in BMW Dealerships",
-    desc: "More than a decade working exclusively in BMW franchise dealerships before opening Precision BMW.",
+    desc: "Extensive hands-on experience diagnosing, maintaining, and repairing BMW vehicles in authorized dealerships.",
   },
   {
-    title: "Eastern Region Achievement Awards",
-    desc: "Earned prestigious BMW of North America performance awards in the Eastern Region.",
+    title: "BMW Eastern Region Achievement Awards",
+    desc: "Recognized by BMW of North America for outstanding performance and achievement in the Eastern Region.",
   },
   {
-    title: "Airframe & Powerplant (A&P) Certified",
-    desc: "FAA-recognized certification for aircraft engine and airframe maintenance from East Coast Aero Tech.",
+    title: "FAA-Certified Airframe & Powerplant Mechanic",
+    desc: "Professionally trained and certified in aircraft maintenance, where precision, technical knowledge, and attention to detail are essential.",
   },
   {
-    title: "FAA Pilot's License",
-    desc: "Holds a pilot's license — the same precision applied to aircraft carries over to every BMW job.",
+    title: "FAA-Licensed Pilot",
+    desc: "Aviation experience that reinforces Derek's commitment to safety, precision, and meticulous workmanship.",
   },
+];
+
+const derekBio = [
+  "Derek's passion for BMWs began professionally in 1992 with training directly from BMW of North America. He went on to spend 14 years working in BMW dealerships, developing the specialized knowledge and hands-on experience that would eventually become the foundation of Precision BMW Repair.",
+  "His commitment to precision extends beyond automobiles. As an FAA-certified Airframe & Powerplant mechanic and licensed pilot, Derek brings the same attention to detail, technical discipline, and high standards to BMW repair that are essential in aviation.",
+  "Today, Derek offers something increasingly difficult to find: personalized BMW service from an experienced specialist who works directly with you. No unnecessary repairs, no upselling, and no dealership runaround. Just honest advice, quality workmanship, and a genuine commitment to keeping your BMW performing at its best.",
+];
+
+const differenceParagraphs = [
+  "At Precision BMW Repair, our philosophy is simple: treat every customer honestly, every BMW with care, and every repair with the attention to detail it deserves.",
+  "We believe you should understand what's happening with your vehicle, what needs attention now, and what can wait. Derek takes the time to explain his findings, answer your questions, and help you make informed decisions without pressure or unnecessary upselling.",
+  "Whether your BMW needs routine maintenance, complex diagnostics, or major repairs, you'll receive the same commitment to quality workmanship, fair pricing, and personalized attention.",
+  "Our goal isn't simply to repair your BMW. It's to earn your trust and become the specialist you confidently return to for years to come.",
 ];
 
 const shopPhotos = [
@@ -223,17 +236,21 @@ export default function AboutPage() {
             {/* Content */}
             <div>
               <ScrollReveal>
-                <span className="section-label">Meet the Technician</span>
+                <span className="section-label">Meet the Owner &amp; Technician</span>
                 <h2 className="section-headline">
-                  Derek — Lead Technician &amp; Owner
+                  Meet Derek — The Experience Behind Precision BMW
                 </h2>
-                <p className="section-sub" style={{ marginBottom: "36px" }}>
-                  Derek&rsquo;s relationship with BMW began in 1992 when he received
-                  direct training from BMW of North America. What followed was 14
-                  years in BMW dealerships and a list of credentials that spans from
-                  automotive service to aviation mechanics. His precision extends from
-                  BMW engines to aircraft — the same meticulous standard applied to both.
-                </p>
+                <div style={{ marginBottom: "36px" }}>
+                  {derekBio.map((text, i) => (
+                    <p
+                      key={i}
+                      className="section-sub"
+                      style={{ marginTop: i > 0 ? "16px" : undefined }}
+                    >
+                      {text}
+                    </p>
+                  ))}
+                </div>
               </ScrollReveal>
 
               <div
@@ -283,7 +300,38 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ── OUR PROMISE ──────────────────────────────────────── */}
+      {/* ── THE PRECISION BMW DIFFERENCE ─────────────────────── */}
+      <section
+        className="section"
+        style={{
+          background: "var(--color-bg)",
+          borderTop: "1px solid var(--color-border)",
+        }}
+      >
+        <div className="container" style={{ maxWidth: "860px" }}>
+          <ScrollReveal>
+            <SectionHeader
+              label="The Precision BMW Difference"
+              headline="Expert BMW Care. Honest Advice. Personal Service."
+            />
+            {differenceParagraphs.map((text, i) => (
+              <p
+                key={i}
+                style={{
+                  color: "var(--color-muted)",
+                  lineHeight: 1.8,
+                  fontSize: "clamp(15px, 2vw, 17px)",
+                  marginTop: i > 0 ? "20px" : undefined,
+                }}
+              >
+                {text}
+              </p>
+            ))}
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* ── CLOSING CTA ──────────────────────────────────────── */}
       <section
         className="section section-with-bg"
         style={{
@@ -298,8 +346,8 @@ export default function AboutPage() {
         <div className="container" style={{ maxWidth: "800px" }}>
           <ScrollReveal>
             <SectionHeader
-              label="Our Promise"
-              headline="Genuine OEM BMW Parts — No Aftermarket"
+              label="Precision BMW Repair"
+              headline="Your BMW Deserves a Specialist Who Knows It."
               centered
             />
             <p
@@ -311,11 +359,10 @@ export default function AboutPage() {
                 marginBottom: "40px",
               }}
             >
-              When you bring your BMW to Precision BMW Repair, you are working
-              directly with the owner — a BMW-trained technician with over 30 years of
-              experience. Every part installed is a genuine OEM BMW part. Every
-              interaction is direct, honest, and technically precise. No guessing.
-              No shortcuts.
+              Experience the difference of working directly with a BMW-trained
+              technician who takes pride in doing things right. From routine
+              maintenance to complex repairs, Derek is here to help you keep your
+              BMW running and driving the way it should.
             </p>
             <div style={{ textAlign: "center" }}>
               <Link href="/schedule" className="btn-primary">

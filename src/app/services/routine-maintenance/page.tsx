@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title:
     "BMW Routine Maintenance — Southern NH | Precision BMW Repair",
   description:
-    "BMW oil changes, tire balancing, tune-ups, and safety inspections by a dealer-trained technician. OEM parts only. Serving Southern NH from Brentwood.",
+    "BMW oil changes, wheel alignment and balancing, tune-ups, and safety inspections by a dealer-trained technician. OEM parts only. Serving Southern NH from Brentwood.",
   alternates: {
     canonical: "https://www.bmwrepairnh.com/services/routine-maintenance",
   },
@@ -43,7 +43,7 @@ export default function RoutineMaintenancePage() {
         image="/images/heroes/routine-maintenance.webp"
         imageAlt="BMW wheel alignment equipment at Precision BMW Repair in Brentwood NH"
         h1="BMW Routine Maintenance in Southern NH"
-        description="Keep your BMW running at peak performance with scheduled maintenance from a dealer-trained technician who works exclusively on BMWs."
+        description="With decades of BMW experience and factory training, Derek knows what it takes to keep your BMW performing at its best. You'll work directly with Derek and receive honest recommendations, personalized attention, and expert service. No unnecessary repairs, no upselling—just the care your BMW actually needs."
         showCta
       />
 

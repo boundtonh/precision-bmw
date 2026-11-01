@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/specializedservices",
-        destination: "/services/performance",
+        destination: "/services/bmw-repair",
         permanent: true,
       },
       {
@@ -38,6 +38,17 @@ const nextConfig: NextConfig = {
         source: "/gallery",
         destination: "/",
         permanent: true,
+      },
+      // Performance category is hidden for now — temporary so it can come back later
+      {
+        source: "/services/performance/:path*",
+        destination: "/services/bmw-repair",
+        permanent: false,
+      },
+      {
+        source: "/services/performance",
+        destination: "/services/bmw-repair",
+        permanent: false,
       },
       {
         source: "/contactus",
